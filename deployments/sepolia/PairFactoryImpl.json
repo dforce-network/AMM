@@ -1,0 +1,972 @@
+{
+  "address": "0x8CA3B8D927f40614063CEDc2Eb4F377925FE077e",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_defSwapFeeRate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_defAdminFeeRate",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "oldManager",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newManager",
+          "type": "address"
+        }
+      ],
+      "name": "ChangeManager",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address[]",
+          "name": "tokens",
+          "type": "address[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "pairType",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "pair",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "pairsAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "PairCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "impl",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "pairType",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "auth",
+          "type": "bool"
+        }
+      ],
+      "name": "RemovePairType",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldDefAdminFeeRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newDefAdminFeeRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetDefAdminFeeRate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldDefSwapFeeRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newDefSwapFeeRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetDefSwapFeeRate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "impl",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "pairType",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "auth",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "oldImpl",
+          "type": "address"
+        }
+      ],
+      "name": "SetPairType",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "manager",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "pendingManager",
+          "type": "address"
+        }
+      ],
+      "name": "SetPendingManager",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_ADMIN_FEE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_SWAP_FEE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "acceptManager",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_impl",
+          "type": "address"
+        }
+      ],
+      "name": "addPairType",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "allPairs",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "allPairsLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "atPairType",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "value",
+          "type": "address"
+        }
+      ],
+      "name": "containsPair",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_tokens",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_pairType",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "createPair",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "_pair",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "defAdminFeeRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "defSwapFeeRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_tokens",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_pairType",
+          "type": "uint8"
+        }
+      ],
+      "name": "getPairAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_defSwapFeeRate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_defAdminFeeRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "isPair",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "manager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "pairParams",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "impl",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "auth",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pairTypeAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pairTypeValues",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "_pairImpls",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingManager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_impl",
+          "type": "address"
+        }
+      ],
+      "name": "removePairType",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_defAdminFeeRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "setDefAdminFeeRate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_defSwapFeeRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "setDefSwapFeeRate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_pendingManager",
+          "type": "address"
+        }
+      ],
+      "name": "setPendingManager",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xc02ca3be615ee6160da04cb8fc4d86940dc94f8f0524568fbe7ec6b5e4c9a21e",
+  "receipt": {
+    "to": null,
+    "from": "0xAE4bdBb0824C9B602589a5DaD2aD96C8A2AcC607",
+    "contractAddress": "0x8CA3B8D927f40614063CEDc2Eb4F377925FE077e",
+    "transactionIndex": 11,
+    "gasUsed": "1671642",
+    "logsBloom": "0x04000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000001000000000001000000000000000000000000000000800000000000000000000000000000000000000000100000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x5750f1c44c6ecb9914e99f141d6e16671d53a4178f0e8fd8729f4e5507321fd0",
+    "transactionHash": "0xc02ca3be615ee6160da04cb8fc4d86940dc94f8f0524568fbe7ec6b5e4c9a21e",
+    "logs": [
+      {
+        "transactionIndex": 11,
+        "blockNumber": 3371374,
+        "transactionHash": "0xc02ca3be615ee6160da04cb8fc4d86940dc94f8f0524568fbe7ec6b5e4c9a21e",
+        "address": "0x8CA3B8D927f40614063CEDc2Eb4F377925FE077e",
+        "topics": [
+          "0xbb556759cd184345231b8fc75d9ce4a3b6318068025c80048773e1880dd336e9"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001c9c380",
+        "logIndex": 16,
+        "blockHash": "0x5750f1c44c6ecb9914e99f141d6e16671d53a4178f0e8fd8729f4e5507321fd0"
+      },
+      {
+        "transactionIndex": 11,
+        "blockNumber": 3371374,
+        "transactionHash": "0xc02ca3be615ee6160da04cb8fc4d86940dc94f8f0524568fbe7ec6b5e4c9a21e",
+        "address": "0x8CA3B8D927f40614063CEDc2Eb4F377925FE077e",
+        "topics": [
+          "0xf5ff144628b9e19f9a5d0286784d338c78a7410e0b25c01a8b4e674bc39b33bb"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000012a05f200",
+        "logIndex": 17,
+        "blockHash": "0x5750f1c44c6ecb9914e99f141d6e16671d53a4178f0e8fd8729f4e5507321fd0"
+      }
+    ],
+    "blockNumber": 3371374,
+    "cumulativeGasUsed": "2733654",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "30000000",
+    "5000000000"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "e9cfe44572584e030c7adb53467bda34",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_defSwapFeeRate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_defAdminFeeRate\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldManager\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newManager\",\"type\":\"address\"}],\"name\":\"ChangeManager\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"tokens\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"pairType\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"pairsAmount\",\"type\":\"uint256\"}],\"name\":\"PairCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"impl\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"pairType\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"auth\",\"type\":\"bool\"}],\"name\":\"RemovePairType\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"oldDefAdminFeeRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newDefAdminFeeRate\",\"type\":\"uint256\"}],\"name\":\"SetDefAdminFeeRate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"oldDefSwapFeeRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newDefSwapFeeRate\",\"type\":\"uint256\"}],\"name\":\"SetDefSwapFeeRate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"impl\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"pairType\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"auth\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldImpl\",\"type\":\"address\"}],\"name\":\"SetPairType\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"manager\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"pendingManager\",\"type\":\"address\"}],\"name\":\"SetPendingManager\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"MAX_ADMIN_FEE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MAX_SWAP_FEE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_impl\",\"type\":\"address\"}],\"name\":\"addPairType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"allPairs\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"allPairsLength\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"atPairType\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"value\",\"type\":\"address\"}],\"name\":\"containsPair\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_tokens\",\"type\":\"address[]\"},{\"internalType\":\"uint8\",\"name\":\"_pairType\",\"type\":\"uint8\"},{\"internalType\":\"bytes\",\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"createPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"_pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"defAdminFeeRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"defSwapFeeRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_tokens\",\"type\":\"address[]\"},{\"internalType\":\"uint8\",\"name\":\"_pairType\",\"type\":\"uint8\"}],\"name\":\"getPairAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_defSwapFeeRate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_defAdminFeeRate\",\"type\":\"uint256\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isPair\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"manager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"name\":\"pairParams\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"impl\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"auth\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pairTypeAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pairTypeValues\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"_pairImpls\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pendingManager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_impl\",\"type\":\"address\"}],\"name\":\"removePairType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_defAdminFeeRate\",\"type\":\"uint256\"}],\"name\":\"setDefAdminFeeRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_defSwapFeeRate\",\"type\":\"uint256\"}],\"name\":\"setDefSwapFeeRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_pendingManager\",\"type\":\"address\"}],\"name\":\"setPendingManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This contract is responsible for creating and managing pairs.\",\"events\":{\"ChangeManager(address,address)\":{\"details\":\"Event emitted when the manager is changed.\",\"params\":{\"newManager\":\"The new manager.\",\"oldManager\":\"The old manager.\"}},\"PairCreated(address[],uint8,address,uint256)\":{\"details\":\"Event emitted when a new pair is created.\",\"params\":{\"pair\":\"The address of the new pair.\",\"pairType\":\"The type of the new pair.\",\"pairsAmount\":\"The total number of pairs.\",\"tokens\":\"The tokens in the new pair.\"}},\"RemovePairType(address,uint8,bool)\":{\"details\":\"Event emitted when a pair type is removed.\",\"params\":{\"auth\":\"The authorization status of the pair to be removed.\",\"impl\":\"The address of the pair implementation.\",\"pairType\":\"The type of the pair to be removed.\"}},\"SetDefAdminFeeRate(uint256,uint256)\":{\"details\":\"Event emitted when the default admin fee rate is changed.\",\"params\":{\"newDefAdminFeeRate\":\"The new default admin fee rate.\",\"oldDefAdminFeeRate\":\"The old default admin fee rate.\"}},\"SetDefSwapFeeRate(uint256,uint256)\":{\"details\":\"Event emitted when the default swap fee rate is changed.\",\"params\":{\"newDefSwapFeeRate\":\"The new default swap fee rate.\",\"oldDefSwapFeeRate\":\"The old default swap fee rate.\"}},\"SetPairType(address,uint8,bool,address)\":{\"details\":\"Event emitted when a new pair type is added.\",\"params\":{\"auth\":\"The authorization status of the new pair.\",\"impl\":\"The address of the pair implementation.\",\"oldImpl\":\"The address of the old pair implementation.\",\"pairType\":\"The type of the new pair.\"}},\"SetPendingManager(address,address)\":{\"details\":\"Event emitted when a new manager is pending.\",\"params\":{\"manager\":\"The current manager.\",\"pendingManager\":\"The new pending manager.\"}}},\"kind\":\"dev\",\"methods\":{\"acceptManager()\":{\"details\":\"Function that accepts the pending manager address.\"},\"addPairType(address)\":{\"details\":\"Function that adds a new pair type.\",\"params\":{\"_impl\":\"The address of the pair implementation.\"}},\"allPairsLength()\":{\"details\":\"Function that returns the length of the allPairs array.\",\"returns\":{\"_0\":\"The length of the allPairs array.\"}},\"atPairType(uint256)\":{\"details\":\"Function that returns the pair implementation address at the given index.\",\"params\":{\"_index\":\"The index of the pair implementation address to return.\"},\"returns\":{\"_0\":\"The pair implementation address at the given index.\"}},\"constructor\":{\"details\":\"Constructor function that initializes the default swap fee rate and default admin fee rate.\",\"params\":{\"_defAdminFeeRate\":\"The default admin fee rate.\",\"_defSwapFeeRate\":\"The default swap fee rate.\"}},\"containsPair(address)\":{\"details\":\"Function that checks if a pair with the given address exists.\",\"params\":{\"value\":\"The address of the pair to check.\"},\"returns\":{\"_0\":\"A boolean indicating whether the pair exists or not.\"}},\"createPair(address[],uint8,bytes)\":{\"details\":\"Function that creates a new pair with the given tokens and pair type.\",\"params\":{\"_data\":\"Additional data to pass to the pair's `initialize` function.\",\"_pairType\":\"The type of the pair to create.\",\"_tokens\":\"The tokens to create the pair with.\"},\"returns\":{\"_pair\":\"The address of the newly created pair.\"}},\"getPairAddress(address[],uint8)\":{\"details\":\"Function that returns the pair address for the given tokens and pair type.\",\"params\":{\"_pairType\":\"The type of the pair to create.\",\"_tokens\":\"The tokens to create the pair with.\"},\"returns\":{\"_0\":\"The pair address for the given tokens and pair type.\"}},\"initialize(uint256,uint256)\":{\"details\":\"Function that initializes the default swap fee rate, default admin fee rate, and manager.\",\"params\":{\"_defAdminFeeRate\":\"The default admin fee rate.\",\"_defSwapFeeRate\":\"The default swap fee rate.\"}},\"pairTypeAmount()\":{\"details\":\"Function that returns the number of pair implementations.\",\"returns\":{\"_0\":\"The number of pair implementations.\"}},\"pairTypeValues()\":{\"details\":\"Function that returns an array of all pair implementation addresses.\",\"returns\":{\"_pairImpls\":\"An array of all pair implementation addresses.\"}},\"removePairType(address)\":{\"details\":\"Function that removes a pair type.\",\"params\":{\"_impl\":\"The address of the pair implementation.\"}},\"setDefAdminFeeRate(uint256)\":{\"details\":\"Function that sets the default admin fee rate.\",\"params\":{\"_defAdminFeeRate\":\"The new default admin fee rate.\"}},\"setDefSwapFeeRate(uint256)\":{\"details\":\"Function that sets the default swap fee rate.\",\"params\":{\"_defSwapFeeRate\":\"The new default swap fee rate.\"}},\"setPendingManager(address)\":{\"details\":\"Function that sets the pending manager address.\",\"params\":{\"_pendingManager\":\"The address of the pending manager.\"}}},\"title\":\"PairFactory\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/PairFactory.sol\":\"PairFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/proxy/Initializable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\n// solhint-disable-next-line compiler-version\\npragma solidity >=0.4.24 <0.8.0;\\n\\nimport \\\"../utils/AddressUpgradeable.sol\\\";\\n\\n/**\\n * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed\\n * behind a proxy. Since a proxied contract can't have a constructor, it's common to move constructor logic to an\\n * external initializer function, usually called `initialize`. It then becomes necessary to protect this initializer\\n * function so it can only be called once. The {initializer} modifier provided by this contract will have this effect.\\n *\\n * TIP: To avoid leaving the proxy in an uninitialized state, the initializer function should be called as early as\\n * possible by providing the encoded function call as the `_data` argument to {UpgradeableProxy-constructor}.\\n *\\n * CAUTION: When used with inheritance, manual care must be taken to not invoke a parent initializer twice, or to ensure\\n * that all initializers are idempotent. This is not verified automatically as constructors are by Solidity.\\n */\\nabstract contract Initializable {\\n\\n    /**\\n     * @dev Indicates that the contract has been initialized.\\n     */\\n    bool private _initialized;\\n\\n    /**\\n     * @dev Indicates that the contract is in the process of being initialized.\\n     */\\n    bool private _initializing;\\n\\n    /**\\n     * @dev Modifier to protect an initializer function from being invoked twice.\\n     */\\n    modifier initializer() {\\n        require(_initializing || _isConstructor() || !_initialized, \\\"Initializable: contract is already initialized\\\");\\n\\n        bool isTopLevelCall = !_initializing;\\n        if (isTopLevelCall) {\\n            _initializing = true;\\n            _initialized = true;\\n        }\\n\\n        _;\\n\\n        if (isTopLevelCall) {\\n            _initializing = false;\\n        }\\n    }\\n\\n    /// @dev Returns true if and only if the function is running in the constructor\\n    function _isConstructor() private view returns (bool) {\\n        return !AddressUpgradeable.isContract(address(this));\\n    }\\n}\\n\",\"keccak256\":\"0xd8e4eb08dcc1d1860fb347ba5ffd595242b9a1b66d49a47f2b4cb51c3f35017e\",\"license\":\"MIT\"},\"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity >=0.6.2 <0.8.0;\\n\\n/**\\n * @dev Collection of functions related to the address type\\n */\\nlibrary AddressUpgradeable {\\n    /**\\n     * @dev Returns true if `account` is a contract.\\n     *\\n     * [IMPORTANT]\\n     * ====\\n     * It is unsafe to assume that an address for which this function returns\\n     * false is an externally-owned account (EOA) and not a contract.\\n     *\\n     * Among others, `isContract` will return false for the following\\n     * types of addresses:\\n     *\\n     *  - an externally-owned account\\n     *  - a contract in construction\\n     *  - an address where a contract will be created\\n     *  - an address where a contract lived, but was destroyed\\n     * ====\\n     */\\n    function isContract(address account) internal view returns (bool) {\\n        // This method relies on extcodesize, which returns 0 for contracts in\\n        // construction, since the code is only stored at the end of the\\n        // constructor execution.\\n\\n        uint256 size;\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly { size := extcodesize(account) }\\n        return size > 0;\\n    }\\n\\n    /**\\n     * @dev Replacement for Solidity's `transfer`: sends `amount` wei to\\n     * `recipient`, forwarding all available gas and reverting on errors.\\n     *\\n     * https://eips.ethereum.org/EIPS/eip-1884[EIP1884] increases the gas cost\\n     * of certain opcodes, possibly making contracts go over the 2300 gas limit\\n     * imposed by `transfer`, making them unable to receive funds via\\n     * `transfer`. {sendValue} removes this limitation.\\n     *\\n     * https://diligence.consensys.net/posts/2019/09/stop-using-soliditys-transfer-now/[Learn more].\\n     *\\n     * IMPORTANT: because control is transferred to `recipient`, care must be\\n     * taken to not create reentrancy vulnerabilities. Consider using\\n     * {ReentrancyGuard} or the\\n     * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].\\n     */\\n    function sendValue(address payable recipient, uint256 amount) internal {\\n        require(address(this).balance >= amount, \\\"Address: insufficient balance\\\");\\n\\n        // solhint-disable-next-line avoid-low-level-calls, avoid-call-value\\n        (bool success, ) = recipient.call{ value: amount }(\\\"\\\");\\n        require(success, \\\"Address: unable to send value, recipient may have reverted\\\");\\n    }\\n\\n    /**\\n     * @dev Performs a Solidity function call using a low level `call`. A\\n     * plain`call` is an unsafe replacement for a function call: use this\\n     * function instead.\\n     *\\n     * If `target` reverts with a revert reason, it is bubbled up by this\\n     * function (like regular Solidity function calls).\\n     *\\n     * Returns the raw returned data. To convert to the expected return value,\\n     * use https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=abi.decode#abi-encoding-and-decoding-functions[`abi.decode`].\\n     *\\n     * Requirements:\\n     *\\n     * - `target` must be a contract.\\n     * - calling `target` with `data` must not revert.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(address target, bytes memory data) internal returns (bytes memory) {\\n      return functionCall(target, data, \\\"Address: low-level call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`], but with\\n     * `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, 0, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but also transferring `value` wei to `target`.\\n     *\\n     * Requirements:\\n     *\\n     * - the calling contract must have an ETH balance of at least `value`.\\n     * - the called Solidity function must be `payable`.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, value, \\\"Address: low-level call with value failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCallWithValue-address-bytes-uint256-}[`functionCallWithValue`], but\\n     * with `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {\\n        require(address(this).balance >= value, \\\"Address: insufficient balance for call\\\");\\n        require(isContract(target), \\\"Address: call to non-contract\\\");\\n\\n        // solhint-disable-next-line avoid-low-level-calls\\n        (bool success, bytes memory returndata) = target.call{ value: value }(data);\\n        return _verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {\\n        return functionStaticCall(target, data, \\\"Address: low-level static call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(address target, bytes memory data, string memory errorMessage) internal view returns (bytes memory) {\\n        require(isContract(target), \\\"Address: static call to non-contract\\\");\\n\\n        // solhint-disable-next-line avoid-low-level-calls\\n        (bool success, bytes memory returndata) = target.staticcall(data);\\n        return _verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage) private pure returns(bytes memory) {\\n        if (success) {\\n            return returndata;\\n        } else {\\n            // Look for revert reason and bubble it up if present\\n            if (returndata.length > 0) {\\n                // The easiest way to bubble the revert reason is using memory via assembly\\n\\n                // solhint-disable-next-line no-inline-assembly\\n                assembly {\\n                    let returndata_size := mload(returndata)\\n                    revert(add(32, returndata), returndata_size)\\n                }\\n            } else {\\n                revert(errorMessage);\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xfc5ea91fa9ceb1961023b2a6c978b902888c52b90847ac7813fe3b79524165f6\",\"license\":\"MIT\"},\"@openzeppelin/contracts/proxy/Clones.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity >=0.6.0 <0.8.0;\\n\\n/**\\n * @dev https://eips.ethereum.org/EIPS/eip-1167[EIP 1167] is a standard for\\n * deploying minimal proxy contracts, also known as \\\"clones\\\".\\n *\\n * > To simply and cheaply clone contract functionality in an immutable way, this standard specifies\\n * > a minimal bytecode implementation that delegates all calls to a known, fixed address.\\n *\\n * The library includes functions to deploy a proxy using either `create` (traditional deployment) or `create2`\\n * (salted deterministic deployment). It also includes functions to predict the addresses of clones deployed using the\\n * deterministic method.\\n *\\n * _Available since v3.4._\\n */\\nlibrary Clones {\\n    /**\\n     * @dev Deploys and returns the address of a clone that mimics the behaviour of `master`.\\n     *\\n     * This function uses the create opcode, which should never revert.\\n     */\\n    function clone(address master) internal returns (address instance) {\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly {\\n            let ptr := mload(0x40)\\n            mstore(ptr, 0x3d602d80600a3d3981f3363d3d373d3d3d363d73000000000000000000000000)\\n            mstore(add(ptr, 0x14), shl(0x60, master))\\n            mstore(add(ptr, 0x28), 0x5af43d82803e903d91602b57fd5bf30000000000000000000000000000000000)\\n            instance := create(0, ptr, 0x37)\\n        }\\n        require(instance != address(0), \\\"ERC1167: create failed\\\");\\n    }\\n\\n    /**\\n     * @dev Deploys and returns the address of a clone that mimics the behaviour of `master`.\\n     *\\n     * This function uses the create2 opcode and a `salt` to deterministically deploy\\n     * the clone. Using the same `master` and `salt` multiple time will revert, since\\n     * the clones cannot be deployed twice at the same address.\\n     */\\n    function cloneDeterministic(address master, bytes32 salt) internal returns (address instance) {\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly {\\n            let ptr := mload(0x40)\\n            mstore(ptr, 0x3d602d80600a3d3981f3363d3d373d3d3d363d73000000000000000000000000)\\n            mstore(add(ptr, 0x14), shl(0x60, master))\\n            mstore(add(ptr, 0x28), 0x5af43d82803e903d91602b57fd5bf30000000000000000000000000000000000)\\n            instance := create2(0, ptr, 0x37, salt)\\n        }\\n        require(instance != address(0), \\\"ERC1167: create2 failed\\\");\\n    }\\n\\n    /**\\n     * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.\\n     */\\n    function predictDeterministicAddress(address master, bytes32 salt, address deployer) internal pure returns (address predicted) {\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly {\\n            let ptr := mload(0x40)\\n            mstore(ptr, 0x3d602d80600a3d3981f3363d3d373d3d3d363d73000000000000000000000000)\\n            mstore(add(ptr, 0x14), shl(0x60, master))\\n            mstore(add(ptr, 0x28), 0x5af43d82803e903d91602b57fd5bf3ff00000000000000000000000000000000)\\n            mstore(add(ptr, 0x38), shl(0x60, deployer))\\n            mstore(add(ptr, 0x4c), salt)\\n            mstore(add(ptr, 0x6c), keccak256(ptr, 0x37))\\n            predicted := keccak256(add(ptr, 0x37), 0x55)\\n        }\\n    }\\n\\n    /**\\n     * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.\\n     */\\n    function predictDeterministicAddress(address master, bytes32 salt) internal view returns (address predicted) {\\n        return predictDeterministicAddress(master, salt, address(this));\\n    }\\n}\\n\",\"keccak256\":\"0x0d24348f536f928d8b42789737bf34762faee065667ab530ea20969a9d9920d1\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity >=0.6.0 <0.8.0;\\n\\n/**\\n * @dev Library for managing\\n * https://en.wikipedia.org/wiki/Set_(abstract_data_type)[sets] of primitive\\n * types.\\n *\\n * Sets have the following properties:\\n *\\n * - Elements are added, removed, and checked for existence in constant time\\n * (O(1)).\\n * - Elements are enumerated in O(n). No guarantees are made on the ordering.\\n *\\n * ```\\n * contract Example {\\n *     // Add the library methods\\n *     using EnumerableSet for EnumerableSet.AddressSet;\\n *\\n *     // Declare a set state variable\\n *     EnumerableSet.AddressSet private mySet;\\n * }\\n * ```\\n *\\n * As of v3.3.0, sets of type `bytes32` (`Bytes32Set`), `address` (`AddressSet`)\\n * and `uint256` (`UintSet`) are supported.\\n */\\nlibrary EnumerableSet {\\n    // To implement this library for multiple types with as little code\\n    // repetition as possible, we write it in terms of a generic Set type with\\n    // bytes32 values.\\n    // The Set implementation uses private functions, and user-facing\\n    // implementations (such as AddressSet) are just wrappers around the\\n    // underlying Set.\\n    // This means that we can only create new EnumerableSets for types that fit\\n    // in bytes32.\\n\\n    struct Set {\\n        // Storage of set values\\n        bytes32[] _values;\\n\\n        // Position of the value in the `values` array, plus 1 because index 0\\n        // means a value is not in the set.\\n        mapping (bytes32 => uint256) _indexes;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function _add(Set storage set, bytes32 value) private returns (bool) {\\n        if (!_contains(set, value)) {\\n            set._values.push(value);\\n            // The value is stored at length-1, but we add 1 to all indexes\\n            // and use 0 as a sentinel value\\n            set._indexes[value] = set._values.length;\\n            return true;\\n        } else {\\n            return false;\\n        }\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function _remove(Set storage set, bytes32 value) private returns (bool) {\\n        // We read and store the value's index to prevent multiple reads from the same storage slot\\n        uint256 valueIndex = set._indexes[value];\\n\\n        if (valueIndex != 0) { // Equivalent to contains(set, value)\\n            // To delete an element from the _values array in O(1), we swap the element to delete with the last one in\\n            // the array, and then remove the last element (sometimes called as 'swap and pop').\\n            // This modifies the order of the array, as noted in {at}.\\n\\n            uint256 toDeleteIndex = valueIndex - 1;\\n            uint256 lastIndex = set._values.length - 1;\\n\\n            // When the value to delete is the last one, the swap operation is unnecessary. However, since this occurs\\n            // so rarely, we still do the swap anyway to avoid the gas cost of adding an 'if' statement.\\n\\n            bytes32 lastvalue = set._values[lastIndex];\\n\\n            // Move the last value to the index where the value to delete is\\n            set._values[toDeleteIndex] = lastvalue;\\n            // Update the index for the moved value\\n            set._indexes[lastvalue] = toDeleteIndex + 1; // All indexes are 1-based\\n\\n            // Delete the slot where the moved value was stored\\n            set._values.pop();\\n\\n            // Delete the index for the deleted slot\\n            delete set._indexes[value];\\n\\n            return true;\\n        } else {\\n            return false;\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function _contains(Set storage set, bytes32 value) private view returns (bool) {\\n        return set._indexes[value] != 0;\\n    }\\n\\n    /**\\n     * @dev Returns the number of values on the set. O(1).\\n     */\\n    function _length(Set storage set) private view returns (uint256) {\\n        return set._values.length;\\n    }\\n\\n   /**\\n    * @dev Returns the value stored at position `index` in the set. O(1).\\n    *\\n    * Note that there are no guarantees on the ordering of values inside the\\n    * array, and it may change when more values are added or removed.\\n    *\\n    * Requirements:\\n    *\\n    * - `index` must be strictly less than {length}.\\n    */\\n    function _at(Set storage set, uint256 index) private view returns (bytes32) {\\n        require(set._values.length > index, \\\"EnumerableSet: index out of bounds\\\");\\n        return set._values[index];\\n    }\\n\\n    // Bytes32Set\\n\\n    struct Bytes32Set {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(Bytes32Set storage set, bytes32 value) internal returns (bool) {\\n        return _add(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(Bytes32Set storage set, bytes32 value) internal returns (bool) {\\n        return _remove(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(Bytes32Set storage set, bytes32 value) internal view returns (bool) {\\n        return _contains(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(Bytes32Set storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n   /**\\n    * @dev Returns the value stored at position `index` in the set. O(1).\\n    *\\n    * Note that there are no guarantees on the ordering of values inside the\\n    * array, and it may change when more values are added or removed.\\n    *\\n    * Requirements:\\n    *\\n    * - `index` must be strictly less than {length}.\\n    */\\n    function at(Bytes32Set storage set, uint256 index) internal view returns (bytes32) {\\n        return _at(set._inner, index);\\n    }\\n\\n    // AddressSet\\n\\n    struct AddressSet {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(AddressSet storage set, address value) internal returns (bool) {\\n        return _add(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(AddressSet storage set, address value) internal returns (bool) {\\n        return _remove(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(AddressSet storage set, address value) internal view returns (bool) {\\n        return _contains(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(AddressSet storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n   /**\\n    * @dev Returns the value stored at position `index` in the set. O(1).\\n    *\\n    * Note that there are no guarantees on the ordering of values inside the\\n    * array, and it may change when more values are added or removed.\\n    *\\n    * Requirements:\\n    *\\n    * - `index` must be strictly less than {length}.\\n    */\\n    function at(AddressSet storage set, uint256 index) internal view returns (address) {\\n        return address(uint160(uint256(_at(set._inner, index))));\\n    }\\n\\n\\n    // UintSet\\n\\n    struct UintSet {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(UintSet storage set, uint256 value) internal returns (bool) {\\n        return _add(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(UintSet storage set, uint256 value) internal returns (bool) {\\n        return _remove(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(UintSet storage set, uint256 value) internal view returns (bool) {\\n        return _contains(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Returns the number of values on the set. O(1).\\n     */\\n    function length(UintSet storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n   /**\\n    * @dev Returns the value stored at position `index` in the set. O(1).\\n    *\\n    * Note that there are no guarantees on the ordering of values inside the\\n    * array, and it may change when more values are added or removed.\\n    *\\n    * Requirements:\\n    *\\n    * - `index` must be strictly less than {length}.\\n    */\\n    function at(UintSet storage set, uint256 index) internal view returns (uint256) {\\n        return uint256(_at(set._inner, index));\\n    }\\n}\\n\",\"keccak256\":\"0x1562cd9922fbf739edfb979f506809e2743789cbde3177515542161c3d04b164\",\"license\":\"MIT\"},\"contracts/PairFactory.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity 0.6.12;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts-upgradeable/proxy/Initializable.sol\\\";\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/utils/EnumerableSet.sol\\\";\\r\\nimport \\\"@openzeppelin/contracts/proxy/Clones.sol\\\";\\r\\n\\r\\nimport \\\"./interface/IPairFactory.sol\\\";\\r\\n\\r\\nimport \\\"./utils/Arrays.sol\\\";\\r\\nimport { IPair } from \\\"./interface/IPair.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title PairFactory\\r\\n * @dev This contract is responsible for creating and managing pairs.\\r\\n */\\r\\ncontract PairFactory is IPairFactory, Initializable {\\r\\n    using EnumerableSet for EnumerableSet.AddressSet;\\r\\n    using Arrays for address[];\\r\\n\\r\\n    // Maximum swap fee and admin fee rates\\r\\n    uint256 public constant MAX_SWAP_FEE = 10 ** 8;\\r\\n    uint256 public constant MAX_ADMIN_FEE = 10 ** 10;\\r\\n\\r\\n    // Address of the current manager\\r\\n    address public override manager;\\r\\n\\r\\n    // Address of the pending manager\\r\\n    address public pendingManager;\\r\\n\\r\\n    // Default swap fee rate\\r\\n    uint256 public defSwapFeeRate;\\r\\n\\r\\n    // Default admin fee rate\\r\\n    uint256 public defAdminFeeRate;\\r\\n\\r\\n    // Mapping of pair addresses to boolean values indicating whether the pair exists\\r\\n    mapping(address => bool) public override isPair;\\r\\n\\r\\n    // Array of all pair addresses\\r\\n    address[] public allPairs;\\r\\n\\r\\n    // Set of pair implementation addresses\\r\\n    EnumerableSet.AddressSet internal pairImpls_;\\r\\n\\r\\n    //1: volatile pair, 2: stable pair, 3: yeild pair\\r\\n    // Struct to store pair implementation and authorization status\\r\\n    struct PairParams {\\r\\n        address impl; // Address of the pair implementation\\r\\n        bool auth; // Authorization status of the pair\\r\\n    }\\r\\n    // Mapping of pair type to pair implementation and authorization status\\r\\n    mapping(uint8 => PairParams) public pairParams;\\r\\n\\r\\n    /**\\r\\n     * @dev Event emitted when a new pair is created.\\r\\n     * @param tokens The tokens in the new pair.\\r\\n     * @param pairType The type of the new pair.\\r\\n     * @param pair The address of the new pair.\\r\\n     * @param pairsAmount The total number of pairs.\\r\\n     */\\r\\n    event PairCreated(address[] tokens, uint8 pairType, address pair, uint256 pairsAmount);\\r\\n\\r\\n    /**\\r\\n     * @dev Event emitted when a new manager is pending.\\r\\n     * @param manager The current manager.\\r\\n     * @param pendingManager The new pending manager.\\r\\n     */\\r\\n    event SetPendingManager(address manager, address pendingManager);\\r\\n\\r\\n    /**\\r\\n     * @dev Event emitted when the manager is changed.\\r\\n     * @param oldManager The old manager.\\r\\n     * @param newManager The new manager.\\r\\n     */\\r\\n    event ChangeManager(address oldManager, address newManager);\\r\\n\\r\\n    /**\\r\\n     * @dev Event emitted when the default swap fee rate is changed.\\r\\n     * @param oldDefSwapFeeRate The old default swap fee rate.\\r\\n     * @param newDefSwapFeeRate The new default swap fee rate.\\r\\n     */\\r\\n    event SetDefSwapFeeRate(uint256 oldDefSwapFeeRate, uint256 newDefSwapFeeRate);\\r\\n\\r\\n    /**\\r\\n     * @dev Event emitted when the default admin fee rate is changed.\\r\\n     * @param oldDefAdminFeeRate The old default admin fee rate.\\r\\n     * @param newDefAdminFeeRate The new default admin fee rate.\\r\\n     */\\r\\n    event SetDefAdminFeeRate(uint256 oldDefAdminFeeRate, uint256 newDefAdminFeeRate);\\r\\n\\r\\n    /**\\r\\n     * @dev Event emitted when a new pair type is added.\\r\\n     * @param impl The address of the pair implementation.\\r\\n     * @param pairType The type of the new pair.\\r\\n     * @param auth The authorization status of the new pair.\\r\\n     * @param oldImpl The address of the old pair implementation.\\r\\n     */\\r\\n    event SetPairType(address impl, uint8 pairType, bool auth, address oldImpl);\\r\\n\\r\\n    /**\\r\\n     * @dev Event emitted when a pair type is removed.\\r\\n     * @param impl The address of the pair implementation.\\r\\n     * @param pairType The type of the pair to be removed.\\r\\n     * @param auth The authorization status of the pair to be removed.\\r\\n     */\\r\\n    event RemovePairType(address impl, uint8 pairType, bool auth);\\r\\n\\r\\n    /**\\r\\n     * @dev Constructor function that initializes the default swap fee rate and default admin fee rate.\\r\\n     * @param _defSwapFeeRate The default swap fee rate.\\r\\n     * @param _defAdminFeeRate The default admin fee rate.\\r\\n     */\\r\\n    constructor(uint256 _defSwapFeeRate, uint256 _defAdminFeeRate) public {\\r\\n        initialize(_defSwapFeeRate, _defAdminFeeRate);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that initializes the default swap fee rate, default admin fee rate, and manager.\\r\\n     * @param _defSwapFeeRate The default swap fee rate.\\r\\n     * @param _defAdminFeeRate The default admin fee rate.\\r\\n     */\\r\\n    function initialize(uint256 _defSwapFeeRate, uint256 _defAdminFeeRate) public initializer {\\r\\n        manager = msg.sender;\\r\\n        setDefSwapFeeRate(_defSwapFeeRate);\\r\\n        setDefAdminFeeRate(_defAdminFeeRate);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Modifier that checks if the caller is the manager.\\r\\n     */\\r\\n    modifier onlyManager() {\\r\\n        require(msg.sender == manager, \\\"PairFactory: not manager\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that returns the length of the allPairs array.\\r\\n     * @return The length of the allPairs array.\\r\\n     */\\r\\n    function allPairsLength() external view override returns (uint256) {\\r\\n        return allPairs.length;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that checks if a pair with the given address exists.\\r\\n     * @param value The address of the pair to check.\\r\\n     * @return A boolean indicating whether the pair exists or not.\\r\\n     */\\r\\n    function containsPair(address value) external view returns (bool) {\\r\\n        return pairImpls_.contains(value);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that returns an array of all pair implementation addresses.\\r\\n     * @return _pairImpls An array of all pair implementation addresses.\\r\\n     */\\r\\n    function pairTypeValues() external view override returns (address[] memory _pairImpls) {\\r\\n        uint256 _len = pairImpls_.length();\\r\\n        _pairImpls = new address[](_len);\\r\\n        for (uint256 i = 0; i < _len; i++) {\\r\\n            _pairImpls[i] = pairImpls_.at(i);\\r\\n        }\\r\\n        return _pairImpls;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that returns the number of pair implementations.\\r\\n     * @return The number of pair implementations.\\r\\n     */\\r\\n    function pairTypeAmount() external view returns (uint256) {\\r\\n        return pairImpls_.length();\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that returns the pair implementation address at the given index.\\r\\n     * @param _index The index of the pair implementation address to return.\\r\\n     * @return The pair implementation address at the given index.\\r\\n     */\\r\\n    function atPairType(uint256 _index) external view override returns (address) {\\r\\n        return pairImpls_.at(_index);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that returns the pair address for the given tokens and pair type.\\r\\n     * @param _tokens The tokens to create the pair with.\\r\\n     * @param _pairType The type of the pair to create.\\r\\n     * @return The pair address for the given tokens and pair type.\\r\\n     */\\r\\n    function getPairAddress(address[] memory _tokens, uint8 _pairType) public view override returns (address) {\\r\\n        bytes32 salt = keccak256(abi.encodePacked(_tokens.sortArray(), _pairType));\\r\\n        return Clones.predictDeterministicAddress(pairParams[_pairType].impl, salt);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that creates a new pair with the given tokens and pair type.\\r\\n     * @param _tokens The tokens to create the pair with.\\r\\n     * @param _pairType The type of the pair to create.\\r\\n     * @param _data Additional data to pass to the pair's `initialize` function.\\r\\n     * @return _pair The address of the newly created pair.\\r\\n     */\\r\\n    function createPair(\\r\\n        address[] memory _tokens,\\r\\n        uint8 _pairType,\\r\\n        bytes memory _data\\r\\n    ) external override returns (address _pair) {\\r\\n        _tokens = _tokens.sortArray();\\r\\n        require(pairParams[_pairType].impl != address(0), \\\"PairFactory: No impl of this type\\\");\\r\\n        require(!isPair[getPairAddress(_tokens, _pairType)], \\\"PairFactory: Pair already exists\\\");\\r\\n\\r\\n        bytes32 salt = keccak256(abi.encodePacked(_tokens, _pairType));\\r\\n\\r\\n        PairParams memory _params = pairParams[_pairType];\\r\\n        if (_pairType == 1) {\\r\\n            _data = abi.encode(defSwapFeeRate, defAdminFeeRate);\\r\\n        }\\r\\n        if (_params.auth) {\\r\\n            require(manager == msg.sender, \\\"PairFactory: this pair type can only be created by manager\\\");\\r\\n        }\\r\\n        _pair = Clones.cloneDeterministic(_params.impl, salt);\\r\\n\\r\\n        IPair(_pair).initialize(_tokens, _data);\\r\\n\\r\\n        allPairs.push(_pair);\\r\\n        isPair[_pair] = true;\\r\\n\\r\\n        emit PairCreated(_tokens, _pairType, _pair, allPairs.length);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that sets the pending manager address.\\r\\n     * @param _pendingManager The address of the pending manager.\\r\\n     */\\r\\n    function setPendingManager(address _pendingManager) external onlyManager {\\r\\n        require(manager != _pendingManager && pendingManager != _pendingManager, \\\"PairFactory: manager has been set\\\");\\r\\n\\r\\n        pendingManager = _pendingManager;\\r\\n\\r\\n        emit SetPendingManager(manager, _pendingManager);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that accepts the pending manager address.\\r\\n     */\\r\\n    function acceptManager() external {\\r\\n        require(msg.sender == pendingManager, \\\"PairFactory: not pending fee manager\\\");\\r\\n        address _oldManager = manager;\\r\\n\\r\\n        manager = pendingManager;\\r\\n        pendingManager = address(0);\\r\\n\\r\\n        emit ChangeManager(_oldManager, manager);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that sets the default swap fee rate.\\r\\n     * @param _defSwapFeeRate The new default swap fee rate.\\r\\n     */\\r\\n    function setDefSwapFeeRate(uint256 _defSwapFeeRate) public onlyManager {\\r\\n        require(_defSwapFeeRate <= MAX_SWAP_FEE, \\\"PairFactory: Over MAX_SWAP_FEE is not allowed\\\");\\r\\n\\r\\n        uint256 _oldDefSwapFeeRate = defSwapFeeRate;\\r\\n        require(_defSwapFeeRate != _oldDefSwapFeeRate, \\\"PairFactory: _defSwapFeeRate invalid\\\");\\r\\n\\r\\n        defSwapFeeRate = _defSwapFeeRate;\\r\\n\\r\\n        emit SetDefSwapFeeRate(_oldDefSwapFeeRate, _defSwapFeeRate);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that sets the default admin fee rate.\\r\\n     * @param _defAdminFeeRate The new default admin fee rate.\\r\\n     */\\r\\n    function setDefAdminFeeRate(uint256 _defAdminFeeRate) public onlyManager {\\r\\n        require(_defAdminFeeRate <= MAX_ADMIN_FEE, \\\"PairFactory: Over MAX_ADMIN_FEE is not allowed\\\");\\r\\n\\r\\n        uint256 _oldDefAdminFeeRate = defAdminFeeRate;\\r\\n        require(_defAdminFeeRate != _oldDefAdminFeeRate, \\\"PairFactory: _defAdminFeeRate invalid\\\");\\r\\n\\r\\n        defAdminFeeRate = _defAdminFeeRate;\\r\\n\\r\\n        emit SetDefAdminFeeRate(_oldDefAdminFeeRate, _defAdminFeeRate);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that adds a new pair type.\\r\\n     * @param _impl The address of the pair implementation.\\r\\n     */\\r\\n    function addPairType(address _impl) external onlyManager {\\r\\n        uint8 _type = IPair(_impl).PAIR_TYPE();\\r\\n        bool _auth = IPair(_impl).AUTH();\\r\\n\\r\\n        require(pairImpls_.add(_impl), \\\"PairFactory: This pair already exists\\\");\\r\\n\\r\\n        require(pairParams[_type].impl == address(0), \\\"PairFactory: This pair type already exists\\\");\\r\\n\\r\\n        pairParams[_type] = PairParams({ impl: _impl, auth: _auth });\\r\\n\\r\\n        emit SetPairType(_impl, _type, _auth, address(0));\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Function that removes a pair type.\\r\\n     * @param _impl The address of the pair implementation.\\r\\n     */\\r\\n    function removePairType(address _impl) external onlyManager {\\r\\n        require(pairImpls_.contains(_impl), \\\"PairFactory: This pair does not exist\\\");\\r\\n\\r\\n        uint8 _type = IPair(_impl).PAIR_TYPE();\\r\\n\\r\\n        pairImpls_.remove(_impl);\\r\\n        PairParams memory _old = pairParams[_type];\\r\\n        delete pairParams[_type];\\r\\n\\r\\n        emit RemovePairType(_impl, _type, _old.auth);\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x729f2e8ecf7b211d001b072f62c4d1fe4b98ee8973a03f47817e74d8add6c1c6\",\"license\":\"MIT\"},\"contracts/interface/IPair.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity 0.6.12;\\r\\n\\r\\ninterface IPair {\\r\\n    function initialize(address[] memory _tokens, bytes memory _data) external;\\r\\n\\r\\n    function PAIR_TYPE() external view returns (uint8);\\r\\n\\r\\n    function AUTH() external view returns (bool);\\r\\n\\r\\n    function tokens() external view returns (address[] memory);\\r\\n\\r\\n    function getAmountOut(address _from, address _to, uint256 _amount) external view returns (uint256);\\r\\n}\\r\\n\\r\\ninterface IVolatilePair is IPair {\\r\\n    function token0() external view returns (address);\\r\\n\\r\\n    function token1() external view returns (address);\\r\\n\\r\\n    function getReserves() external view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast);\\r\\n\\r\\n    function mint(address _to) external returns (uint256 _liquidity);\\r\\n\\r\\n    function burn(address _to) external returns (uint256 _amount0, uint256 _amount1);\\r\\n\\r\\n    function swap(uint256 _amount0Out, uint256 _amount1Out, address _to, bytes calldata _data) external;\\r\\n\\r\\n    function getRealBalanceOf() external view returns (uint256, uint256);\\r\\n\\r\\n    function skim(address _to) external;\\r\\n\\r\\n    function sync() external;\\r\\n\\r\\n    function claimFees() external returns (uint256[] memory _adminFees);\\r\\n}\\r\\n\\r\\ninterface IStablePair is IPair {\\r\\n    function lpToken() external view returns (address);\\r\\n\\r\\n    function calculateTokenAmount(\\r\\n        address[] calldata _tokens,\\r\\n        uint256[] calldata _amounts,\\r\\n        bool _deposit\\r\\n    ) external view returns (uint256);\\r\\n\\r\\n    function calculateRemoveLiquidityOneToken(address _token, uint256 _liquidity) external view returns (uint256);\\r\\n\\r\\n    function calculateRemoveLiquidity(\\r\\n        address[] calldata _tokens,\\r\\n        uint256 _amount\\r\\n    ) external view returns (uint256[] memory);\\r\\n\\r\\n    function addLiquidity(\\r\\n        address[] calldata _tokens,\\r\\n        uint256[] calldata _amounts,\\r\\n        uint256 _minToMint,\\r\\n        address _receiver,\\r\\n        uint256 _deadline\\r\\n    ) external returns (uint256);\\r\\n\\r\\n    function removeLiquidity(\\r\\n        uint256 _amount,\\r\\n        address[] calldata _tokens,\\r\\n        uint256[] calldata _minAmounts,\\r\\n        address _receiver,\\r\\n        uint256 _deadline\\r\\n    ) external returns (uint256[] memory);\\r\\n\\r\\n    function removeLiquidityOneToken(\\r\\n        uint256 _tokenAmount,\\r\\n        address _token,\\r\\n        uint256 _minAmount,\\r\\n        address _receiver,\\r\\n        uint256 _deadline\\r\\n    ) external returns (uint256);\\r\\n\\r\\n    function removeLiquidityImbalance(\\r\\n        address[] calldata _tokens,\\r\\n        uint256[] calldata _amounts,\\r\\n        uint256 _maxBurnAmount,\\r\\n        address _receiver,\\r\\n        uint256 _deadline\\r\\n    ) external returns (uint256);\\r\\n\\r\\n    function swap(\\r\\n        address _tokenFrom,\\r\\n        address _tokenTo,\\r\\n        uint256 _dx,\\r\\n        uint256 _minDy,\\r\\n        address _receiver,\\r\\n        uint256 _deadline\\r\\n    ) external returns (uint256);\\r\\n}\\r\\n\",\"keccak256\":\"0x8796707a5736c209980b09520f4c8008d2fe905054047dde5fee477da1148bb4\",\"license\":\"MIT\"},\"contracts/interface/IPairFactory.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\r\\npragma solidity 0.6.12;\\r\\n\\r\\ninterface IPairFactory {\\r\\n    function allPairsLength() external view returns (uint256);\\r\\n\\r\\n    function isPair(address _pair) external view returns (bool);\\r\\n\\r\\n    function manager() external view returns (address);\\r\\n\\r\\n    function getPairAddress(address[] memory _tokens, uint8 _type) external view returns (address);\\r\\n\\r\\n    function pairTypeValues() external view returns (address[] memory);\\r\\n\\r\\n    function atPairType(uint256 _index) external view returns (address);\\r\\n\\r\\n    function createPair(address[] memory _tokens, uint8 _pairType, bytes memory _data) external returns (address _pair);\\r\\n}\\r\\n\",\"keccak256\":\"0xe314a2ce4797a8ece22ef30a6dfcb071bae55e0b70018a61532d7e7de1325d75\",\"license\":\"MIT\"},\"contracts/utils/Arrays.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\r\\npragma solidity 0.6.12;\\r\\n\\r\\n/**\\r\\n * @title Arrays\\r\\n * @dev Utility library of inline functions on arrays.\\r\\n */\\r\\nlibrary Arrays {\\r\\n    /**\\r\\n     * @dev Sorts an array of addresses in ascending order.\\r\\n     * @param arr The input array.\\r\\n     * @return The sorted array.\\r\\n     */\\r\\n    function sortArray(address[] memory arr) internal pure returns (address[] memory) {\\r\\n        uint256 l = arr.length;\\r\\n        for (uint256 i = 0; i < l; i++) {\\r\\n            for (uint256 j = i + 1; j < l; j++) {\\r\\n                if (arr[i] > arr[j]) {\\r\\n                    address temp = arr[i];\\r\\n                    arr[i] = arr[j];\\r\\n                    arr[j] = temp;\\r\\n                }\\r\\n            }\\r\\n        }\\r\\n        return arr;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Copies an array of addresses and adds a new address to the end.\\r\\n     * @param arr The input array.\\r\\n     * @param add The address to add to the end of the array.\\r\\n     * @return result The new array with the added address.\\r\\n     */\\r\\n    function copyAndAddOne(address[] memory arr, address add) internal pure returns (address[] memory result) {\\r\\n        result = new address[](arr.length + 1);\\r\\n        for (uint256 i = 0; i < arr.length; i++) {\\r\\n            result[i] = arr[i];\\r\\n        }\\r\\n        result[arr.length] = add;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Removes any empty addresses from an array.\\r\\n     * @param arr The input array.\\r\\n     * @return newArr The new array with empty addresses removed.\\r\\n     */\\r\\n    function removeEmpty(address[] memory arr) internal pure returns (address[] memory newArr) {\\r\\n        uint256 count;\\r\\n        for (uint256 i = 0; i < arr.length; i++) {\\r\\n            if (arr[i] != address(0)) {\\r\\n                count++;\\r\\n            }\\r\\n        }\\r\\n        newArr = new address[](count);\\r\\n        uint256 j;\\r\\n        for (uint256 i = 0; i < arr.length; i++) {\\r\\n            if (arr[i] == address(0)) {\\r\\n                continue;\\r\\n            }\\r\\n            newArr[j] = arr[i];\\r\\n            j++;\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xe3212a2f58a525a3d22e6ca8e8bc0e502076d47fb21dbb1ab9bb7cb237e9e617\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b506040516200204938038062002049833981810160405260408110156200003757600080fd5b5080516020909101516200004c828262000054565b5050620003ba565b600054610100900460ff1680620000705750620000706200012f565b806200007f575060005460ff16155b620000bc5760405162461bcd60e51b815260040180806020018281038252602e81526020018062001f9b602e913960400191505060405180910390fd5b600054610100900460ff16158015620000e8576000805460ff1961ff0019909116610100171660011790555b6000805462010000600160b01b0319163362010000021790556200010c836200014d565b620001178262000280565b80156200012a576000805461ff00191690555b505050565b60006200014730620003b460201b620015271760201c565b15905090565b6000546201000090046001600160a01b03163314620001b3576040805162461bcd60e51b815260206004820152601860248201527f50616972466163746f72793a206e6f74206d616e616765720000000000000000604482015290519081900360640190fd5b6305f5e100811115620001f85760405162461bcd60e51b815260040180806020018281038252602d81526020018062001fee602d913960400191505060405180910390fd5b600254818114156200023c5760405162461bcd60e51b815260040180806020018281038252602481526020018062001f776024913960400191505060405180910390fd5b6002829055604080518281526020810184905281517fbb556759cd184345231b8fc75d9ce4a3b6318068025c80048773e1880dd336e9929181900390910190a15050565b6000546201000090046001600160a01b03163314620002e6576040805162461bcd60e51b815260206004820152601860248201527f50616972466163746f72793a206e6f74206d616e616765720000000000000000604482015290519081900360640190fd5b6402540be4008111156200032c5760405162461bcd60e51b815260040180806020018281038252602e8152602001806200201b602e913960400191505060405180910390fd5b60035481811415620003705760405162461bcd60e51b815260040180806020018281038252602581526020018062001fc96025913960400191505060405180910390fd5b6003829055604080518281526020810184905281517ff5ff144628b9e19f9a5d0286784d338c78a7410e0b25c01a8b4e674bc39b33bb929181900390910190a15050565b3b151590565b611bad80620003ca6000396000f3fe608060405234801561001057600080fd5b506004361061014d5760003560e01c8063a5652b62116100c3578063d3bd1f361161007c578063d3bd1f361461046f578063e0b3df1714610495578063e4a30116146104b2578063e5e31b13146104d5578063f3de0362146104fb578063fd8d63c2146105035761014d565b8063a5652b62146102a4578063a74ecadc146102ac578063a908b0ac14610304578063ab3d854414610439578063b9a5982614610441578063cb4278e4146104675761014d565b8063574f2ba311610115578063574f2ba3146101d45780636143f2f9146101dc5780636f627dbb1461021f57806372e67d0614610259578063962912b21461027f578063a00fff6f1461029c5761014d565b80631e3dd18b1461015257806323edcef81461018b5780634380cd5b146101a5578063481c6a75146101c457806348ff15b3146101cc575b600080fd5b61016f6004803603602081101561016857600080fd5b50356105ab565b604080516001600160a01b039092168252519081900360200190f35b6101936105d2565b60408051918252519081900360200190f35b6101c2600480360360208110156101bb57600080fd5b50356105d8565b005b61016f6106f5565b6101c261070a565b6101936107d6565b6101fc600480360360208110156101f257600080fd5b503560ff166107dc565b604080516001600160a01b03909316835290151560208301528051918290030190f35b6102456004803603602081101561023557600080fd5b50356001600160a01b0316610803565b604080519115158252519081900360200190f35b6101c26004803603602081101561026f57600080fd5b50356001600160a01b0316610816565b6101c26004803603602081101561029557600080fd5b5035610940565b61016f610a5c565b610193610a6b565b6102b4610a71565b60408051602080825283518183015283519192839290830191858101910280838360005b838110156102f05781810151838201526020016102d8565b505050509050019250505060405180910390f35b61016f6004803603606081101561031a57600080fd5b81019060208101813564010000000081111561033557600080fd5b82018360208201111561034757600080fd5b8035906020019184602083028401116401000000008311171561036957600080fd5b919080806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250929560ff8535169590949093506040810192506020013590506401000000008111156103c457600080fd5b8201836020820111156103d657600080fd5b803590602001918460018302840111640100000000831117156103f857600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550610b0c945050505050565b610193610f41565b6101c26004803603602081101561045757600080fd5b50356001600160a01b0316610f49565b6101936111c2565b6101c26004803603602081101561048557600080fd5b50356001600160a01b03166111d3565b61016f600480360360208110156104ab57600080fd5b5035611387565b6101c2600480360360408110156104c857600080fd5b5080359060200135611394565b610245600480360360208110156104eb57600080fd5b50356001600160a01b0316611463565b610193611478565b61016f6004803603604081101561051957600080fd5b81019060208101813564010000000081111561053457600080fd5b82018360208201111561054657600080fd5b8035906020019184602083028401116401000000008311171561056857600080fd5b9190808060200260200160405190810160405280939291908181526020018383602002808284376000920191909152509295505050903560ff1691506114819050565b600581815481106105b857fe5b6000918252602090912001546001600160a01b0316905081565b60035481565b6000546201000090046001600160a01b0316331461062b576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6402540be40081111561066f5760405162461bcd60e51b815260040180806020018281038252602e815260200180611b4a602e913960400191505060405180910390fd5b600354818114156106b15760405162461bcd60e51b8152600401808060200182810382526025815260200180611a926025913960400191505060405180910390fd5b6003829055604080518281526020810184905281517ff5ff144628b9e19f9a5d0286784d338c78a7410e0b25c01a8b4e674bc39b33bb929181900390910190a15050565b6000546201000090046001600160a01b031681565b6001546001600160a01b031633146107535760405162461bcd60e51b8152600401808060200182810382526024815260200180611a6e6024913960400191505060405180910390fd5b60008054600180546001600160a01b038181166201000090810262010000600160b01b0319861617958690556001600160a01b031990921690925560408051938290048316808552919094049091166020830152825190927f034ab062c9c6c8ddd60650a40372b1d413588174682d4ca1a4e53aa37589ab2d928290030190a150565b60055490565b6008602052600090815260409020546001600160a01b03811690600160a01b900460ff1682565b600061081060068361152d565b92915050565b6000546201000090046001600160a01b03163314610869576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6000546001600160a01b0382811662010000909204161480159061089b57506001546001600160a01b03828116911614155b6108d65760405162461bcd60e51b81526004018080602001828103825260218152602001806119ac6021913960400191505060405180910390fd5b600180546001600160a01b0319166001600160a01b0383811691821790925560005460408051620100009092049093168152602081019190915281517f31611f252cc4dee76fe1196ab35a92c502a06a91ccdcf1472e3ee399e6a7a4bb929181900390910190a150565b6000546201000090046001600160a01b03163314610993576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6305f5e1008111156109d65760405162461bcd60e51b815260040180806020018281038252602d815260200180611b1d602d913960400191505060405180910390fd5b60025481811415610a185760405162461bcd60e51b81526004018080602001828103825260248152602001806119f76024913960400191505060405180910390fd5b6002829055604080518281526020810184905281517fbb556759cd184345231b8fc75d9ce4a3b6318068025c80048773e1880dd336e9929181900390910190a15050565b6001546001600160a01b031681565b60025481565b60606000610a7f6006611549565b90508067ffffffffffffffff81118015610a9857600080fd5b50604051908082528060200260200182016040528015610ac2578160200160208202803683370190505b50915060005b81811015610b0757610adb600682611554565b838281518110610ae757fe5b6001600160a01b0390921660209283029190910190910152600101610ac8565b505090565b6000610b1784611560565b60ff84166000908152600860205260409020549094506001600160a01b0316610b715760405162461bcd60e51b8152600401808060200182810382526021815260200180611ab76021913960400191505060405180910390fd5b60046000610b7f8686611481565b6001600160a01b0316815260208101919091526040016000205460ff1615610bee576040805162461bcd60e51b815260206004820181905260248201527f50616972466163746f72793a205061697220616c726561647920657869737473604482015290519081900360640190fd5b6000848460405160200180838051906020019060200280838360005b83811015610c22578181015183820152602001610c0a565b505050509050018260ff1660f81b815260010192505050604051602081830303815290604052805190602001209050610c59611938565b5060ff8085166000818152600860209081526040918290208251808401909352546001600160a01b0381168352600160a01b900490931615159281019290925260011415610cd057600254600354604051602001808381526020018281526020019250505060405160208183030381529060405293505b806020015115610d29576000546201000090046001600160a01b03163314610d295760405162461bcd60e51b815260040180806020018281038252603a815260200180611950603a913960400191505060405180910390fd5b8051610d35908361165d565b9250826001600160a01b031663e69e24a887866040518363ffffffff1660e01b8152600401808060200180602001838103835285818151815260200191508051906020019060200280838360005b83811015610d9b578181015183820152602001610d83565b50505050905001838103825284818151815260200191508051906020019080838360005b83811015610dd7578181015183820152602001610dbf565b50505050905090810190601f168015610e045780820380516001836020036101000a031916815260200191505b50945050505050600060405180830381600087803b158015610e2557600080fd5b505af1158015610e39573d6000803e3d6000fd5b505060058054600180820183557f036b6384b5eca791c62761152d0c79bb0604c104a5fb6f4eb0703f3154bb3db090910180546001600160a01b0319166001600160a01b0389169081179091556000818152600460209081526040808320805460ff19169095179094559354835160ff8d1681870152938401929092526060830182905260808084528c51908401528b517fb1424b6c1e4d8dcbe71c791ebb0fd69752e4c4ce8ce2d5fa660ea942aaa2d3de96508c95508b948a9492839260a0840192898101929102908190849084905b83811015610f22578181015183820152602001610f0a565b505050509050019550505050505060405180910390a150509392505050565b6305f5e10081565b6000546201000090046001600160a01b03163314610f9c576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6000816001600160a01b031663508d1e6b6040518163ffffffff1660e01b815260040160206040518083038186803b158015610fd757600080fd5b505afa158015610feb573d6000803e3d6000fd5b505050506040513d602081101561100157600080fd5b505160408051630a5623fb60e01b815290519192506000916001600160a01b03851691630a5623fb916004808301926020929190829003018186803b15801561104957600080fd5b505afa15801561105d573d6000803e3d6000fd5b505050506040513d602081101561107357600080fd5b50519050611082600684611702565b6110bd5760405162461bcd60e51b8152600401808060200182810382526025815260200180611a1b6025913960400191505060405180910390fd5b60ff82166000908152600860205260409020546001600160a01b0316156111155760405162461bcd60e51b815260040180806020018281038252602a8152602001806119cd602a913960400191505060405180910390fd5b6040805180820182526001600160a01b03858116808352841515602080850182815260ff89166000818152600884528881209751885493516001600160a01b031990941697169690961760ff60a01b1916600160a01b9215159290920291909117909555855192835282019390935280840192909252606082015290517f1400ba2558efe19fc8d7538b626f52083999103aea4d54d27d2511017e95e2d4916080908290030190a1505050565b60006111ce6006611549565b905090565b6000546201000090046001600160a01b03163314611226576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b61123160068261152d565b61126c5760405162461bcd60e51b8152600401808060200182810382526025815260200180611af86025913960400191505060405180910390fd5b6000816001600160a01b031663508d1e6b6040518163ffffffff1660e01b815260040160206040518083038186803b1580156112a757600080fd5b505afa1580156112bb573d6000803e3d6000fd5b505050506040513d60208110156112d157600080fd5b505190506112e0600683611717565b506112e9611938565b5060ff80821660008181526008602081815260408084208151808301835281546001600160a01b038082168352600160a01b82049099161515828601908152968890529484526001600160a81b0319909416905592518351958816865290850193909352911515838201525190917f626aa489691af84bf64ea4aa134b8304d7f9b324e1200a8b03fef32d2ca08e67919081900360600190a1505050565b6000610810600683611554565b600054610100900460ff16806113ad57506113ad61172c565b806113bb575060005460ff16155b6113f65760405162461bcd60e51b815260040180806020018281038252602e815260200180611a40602e913960400191505060405180910390fd5b600054610100900460ff16158015611421576000805460ff1961ff0019909116610100171660011790555b6000805462010000600160b01b03191633620100000217905561144383610940565b61144c826105d8565b801561145e576000805461ff00191690555b505050565b60046020526000908152604090205460ff1681565b6402540be40081565b60008061148d84611560565b8360405160200180838051906020019060200280838360005b838110156114be5781810151838201526020016114a6565b5050505060f89490941b6001600160f81b03191693909101928352505060408051808303601e1901815260019092018152815160209283012060ff87166000908152600890935291205490925061151f91506001600160a01b03168261173d565b949350505050565b3b151590565b6000611542836001600160a01b03841661174a565b9392505050565b600061081082611762565b60006115428383611766565b805160609060005b8181101561165557600181015b8281101561164c5784818151811061158957fe5b60200260200101516001600160a01b03168583815181106115a657fe5b60200260200101516001600160a01b031611156116445760008583815181106115cb57fe5b602002602001015190508582815181106115e157fe5b60200260200101518684815181106115f557fe5b60200260200101906001600160a01b031690816001600160a01b0316815250508086838151811061162257fe5b60200260200101906001600160a01b031690816001600160a01b031681525050505b600101611575565b50600101611568565b509192915050565b6000604051733d602d80600a3d3981f3363d3d373d3d3d363d7360601b81528360601b60148201526e5af43d82803e903d91602b57fd5bf360881b6028820152826037826000f59150506001600160a01b038116610810576040805162461bcd60e51b815260206004820152601760248201527f455243313136373a2063726561746532206661696c6564000000000000000000604482015290519081900360640190fd5b6000611542836001600160a01b0384166117ca565b6000611542836001600160a01b038416611814565b600061173730611527565b15905090565b60006115428383306118da565b60009081526001919091016020526040902054151590565b5490565b815460009082106117a85760405162461bcd60e51b815260040180806020018281038252602281526020018061198a6022913960400191505060405180910390fd5b8260000182815481106117b757fe5b9060005260206000200154905092915050565b60006117d6838361174a565b61180c57508154600181810184556000848152602080822090930184905584548482528286019093526040902091909155610810565b506000610810565b600081815260018301602052604081205480156118d0578354600019808301919081019060009087908390811061184757fe5b906000526020600020015490508087600001848154811061186457fe5b60009182526020808320909101929092558281526001898101909252604090209084019055865487908061189457fe5b60019003818190600052602060002001600090559055866001016000878152602001908152602001600020600090556001945050505050610810565b6000915050610810565b604051733d602d80600a3d3981f3363d3d373d3d3d363d7360601b8152606093841b60148201526f5af43d82803e903d91602b57fd5bf3ff60801b6028820152921b6038830152604c8201526037808220606c830152605591012090565b60408051808201909152600080825260208201529056fe50616972466163746f72793a2074686973207061697220747970652063616e206f6e6c792062652063726561746564206279206d616e61676572456e756d657261626c655365743a20696e646578206f7574206f6620626f756e647350616972466163746f72793a206d616e6167657220686173206265656e2073657450616972466163746f72793a20546869732070616972207479706520616c72656164792065786973747350616972466163746f72793a205f646566537761704665655261746520696e76616c696450616972466163746f72793a2054686973207061697220616c726561647920657869737473496e697469616c697a61626c653a20636f6e747261637420697320616c726561647920696e697469616c697a656450616972466163746f72793a206e6f742070656e64696e6720666565206d616e6167657250616972466163746f72793a205f64656641646d696e4665655261746520696e76616c696450616972466163746f72793a204e6f20696d706c206f662074686973207479706550616972466163746f72793a206e6f74206d616e61676572000000000000000050616972466163746f72793a2054686973207061697220646f6573206e6f7420657869737450616972466163746f72793a204f766572204d41585f535741505f464545206973206e6f7420616c6c6f77656450616972466163746f72793a204f766572204d41585f41444d494e5f464545206973206e6f7420616c6c6f776564a2646970667358221220de6188a0c13892f62ae8ca5efee567620bbdd94e34df98992dc7967ca69244ea64736f6c634300060c003350616972466163746f72793a205f646566537761704665655261746520696e76616c6964496e697469616c697a61626c653a20636f6e747261637420697320616c726561647920696e697469616c697a656450616972466163746f72793a205f64656641646d696e4665655261746520696e76616c696450616972466163746f72793a204f766572204d41585f535741505f464545206973206e6f7420616c6c6f77656450616972466163746f72793a204f766572204d41585f41444d494e5f464545206973206e6f7420616c6c6f776564",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061014d5760003560e01c8063a5652b62116100c3578063d3bd1f361161007c578063d3bd1f361461046f578063e0b3df1714610495578063e4a30116146104b2578063e5e31b13146104d5578063f3de0362146104fb578063fd8d63c2146105035761014d565b8063a5652b62146102a4578063a74ecadc146102ac578063a908b0ac14610304578063ab3d854414610439578063b9a5982614610441578063cb4278e4146104675761014d565b8063574f2ba311610115578063574f2ba3146101d45780636143f2f9146101dc5780636f627dbb1461021f57806372e67d0614610259578063962912b21461027f578063a00fff6f1461029c5761014d565b80631e3dd18b1461015257806323edcef81461018b5780634380cd5b146101a5578063481c6a75146101c457806348ff15b3146101cc575b600080fd5b61016f6004803603602081101561016857600080fd5b50356105ab565b604080516001600160a01b039092168252519081900360200190f35b6101936105d2565b60408051918252519081900360200190f35b6101c2600480360360208110156101bb57600080fd5b50356105d8565b005b61016f6106f5565b6101c261070a565b6101936107d6565b6101fc600480360360208110156101f257600080fd5b503560ff166107dc565b604080516001600160a01b03909316835290151560208301528051918290030190f35b6102456004803603602081101561023557600080fd5b50356001600160a01b0316610803565b604080519115158252519081900360200190f35b6101c26004803603602081101561026f57600080fd5b50356001600160a01b0316610816565b6101c26004803603602081101561029557600080fd5b5035610940565b61016f610a5c565b610193610a6b565b6102b4610a71565b60408051602080825283518183015283519192839290830191858101910280838360005b838110156102f05781810151838201526020016102d8565b505050509050019250505060405180910390f35b61016f6004803603606081101561031a57600080fd5b81019060208101813564010000000081111561033557600080fd5b82018360208201111561034757600080fd5b8035906020019184602083028401116401000000008311171561036957600080fd5b919080806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250929560ff8535169590949093506040810192506020013590506401000000008111156103c457600080fd5b8201836020820111156103d657600080fd5b803590602001918460018302840111640100000000831117156103f857600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550610b0c945050505050565b610193610f41565b6101c26004803603602081101561045757600080fd5b50356001600160a01b0316610f49565b6101936111c2565b6101c26004803603602081101561048557600080fd5b50356001600160a01b03166111d3565b61016f600480360360208110156104ab57600080fd5b5035611387565b6101c2600480360360408110156104c857600080fd5b5080359060200135611394565b610245600480360360208110156104eb57600080fd5b50356001600160a01b0316611463565b610193611478565b61016f6004803603604081101561051957600080fd5b81019060208101813564010000000081111561053457600080fd5b82018360208201111561054657600080fd5b8035906020019184602083028401116401000000008311171561056857600080fd5b9190808060200260200160405190810160405280939291908181526020018383602002808284376000920191909152509295505050903560ff1691506114819050565b600581815481106105b857fe5b6000918252602090912001546001600160a01b0316905081565b60035481565b6000546201000090046001600160a01b0316331461062b576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6402540be40081111561066f5760405162461bcd60e51b815260040180806020018281038252602e815260200180611b4a602e913960400191505060405180910390fd5b600354818114156106b15760405162461bcd60e51b8152600401808060200182810382526025815260200180611a926025913960400191505060405180910390fd5b6003829055604080518281526020810184905281517ff5ff144628b9e19f9a5d0286784d338c78a7410e0b25c01a8b4e674bc39b33bb929181900390910190a15050565b6000546201000090046001600160a01b031681565b6001546001600160a01b031633146107535760405162461bcd60e51b8152600401808060200182810382526024815260200180611a6e6024913960400191505060405180910390fd5b60008054600180546001600160a01b038181166201000090810262010000600160b01b0319861617958690556001600160a01b031990921690925560408051938290048316808552919094049091166020830152825190927f034ab062c9c6c8ddd60650a40372b1d413588174682d4ca1a4e53aa37589ab2d928290030190a150565b60055490565b6008602052600090815260409020546001600160a01b03811690600160a01b900460ff1682565b600061081060068361152d565b92915050565b6000546201000090046001600160a01b03163314610869576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6000546001600160a01b0382811662010000909204161480159061089b57506001546001600160a01b03828116911614155b6108d65760405162461bcd60e51b81526004018080602001828103825260218152602001806119ac6021913960400191505060405180910390fd5b600180546001600160a01b0319166001600160a01b0383811691821790925560005460408051620100009092049093168152602081019190915281517f31611f252cc4dee76fe1196ab35a92c502a06a91ccdcf1472e3ee399e6a7a4bb929181900390910190a150565b6000546201000090046001600160a01b03163314610993576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6305f5e1008111156109d65760405162461bcd60e51b815260040180806020018281038252602d815260200180611b1d602d913960400191505060405180910390fd5b60025481811415610a185760405162461bcd60e51b81526004018080602001828103825260248152602001806119f76024913960400191505060405180910390fd5b6002829055604080518281526020810184905281517fbb556759cd184345231b8fc75d9ce4a3b6318068025c80048773e1880dd336e9929181900390910190a15050565b6001546001600160a01b031681565b60025481565b60606000610a7f6006611549565b90508067ffffffffffffffff81118015610a9857600080fd5b50604051908082528060200260200182016040528015610ac2578160200160208202803683370190505b50915060005b81811015610b0757610adb600682611554565b838281518110610ae757fe5b6001600160a01b0390921660209283029190910190910152600101610ac8565b505090565b6000610b1784611560565b60ff84166000908152600860205260409020549094506001600160a01b0316610b715760405162461bcd60e51b8152600401808060200182810382526021815260200180611ab76021913960400191505060405180910390fd5b60046000610b7f8686611481565b6001600160a01b0316815260208101919091526040016000205460ff1615610bee576040805162461bcd60e51b815260206004820181905260248201527f50616972466163746f72793a205061697220616c726561647920657869737473604482015290519081900360640190fd5b6000848460405160200180838051906020019060200280838360005b83811015610c22578181015183820152602001610c0a565b505050509050018260ff1660f81b815260010192505050604051602081830303815290604052805190602001209050610c59611938565b5060ff8085166000818152600860209081526040918290208251808401909352546001600160a01b0381168352600160a01b900490931615159281019290925260011415610cd057600254600354604051602001808381526020018281526020019250505060405160208183030381529060405293505b806020015115610d29576000546201000090046001600160a01b03163314610d295760405162461bcd60e51b815260040180806020018281038252603a815260200180611950603a913960400191505060405180910390fd5b8051610d35908361165d565b9250826001600160a01b031663e69e24a887866040518363ffffffff1660e01b8152600401808060200180602001838103835285818151815260200191508051906020019060200280838360005b83811015610d9b578181015183820152602001610d83565b50505050905001838103825284818151815260200191508051906020019080838360005b83811015610dd7578181015183820152602001610dbf565b50505050905090810190601f168015610e045780820380516001836020036101000a031916815260200191505b50945050505050600060405180830381600087803b158015610e2557600080fd5b505af1158015610e39573d6000803e3d6000fd5b505060058054600180820183557f036b6384b5eca791c62761152d0c79bb0604c104a5fb6f4eb0703f3154bb3db090910180546001600160a01b0319166001600160a01b0389169081179091556000818152600460209081526040808320805460ff19169095179094559354835160ff8d1681870152938401929092526060830182905260808084528c51908401528b517fb1424b6c1e4d8dcbe71c791ebb0fd69752e4c4ce8ce2d5fa660ea942aaa2d3de96508c95508b948a9492839260a0840192898101929102908190849084905b83811015610f22578181015183820152602001610f0a565b505050509050019550505050505060405180910390a150509392505050565b6305f5e10081565b6000546201000090046001600160a01b03163314610f9c576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b6000816001600160a01b031663508d1e6b6040518163ffffffff1660e01b815260040160206040518083038186803b158015610fd757600080fd5b505afa158015610feb573d6000803e3d6000fd5b505050506040513d602081101561100157600080fd5b505160408051630a5623fb60e01b815290519192506000916001600160a01b03851691630a5623fb916004808301926020929190829003018186803b15801561104957600080fd5b505afa15801561105d573d6000803e3d6000fd5b505050506040513d602081101561107357600080fd5b50519050611082600684611702565b6110bd5760405162461bcd60e51b8152600401808060200182810382526025815260200180611a1b6025913960400191505060405180910390fd5b60ff82166000908152600860205260409020546001600160a01b0316156111155760405162461bcd60e51b815260040180806020018281038252602a8152602001806119cd602a913960400191505060405180910390fd5b6040805180820182526001600160a01b03858116808352841515602080850182815260ff89166000818152600884528881209751885493516001600160a01b031990941697169690961760ff60a01b1916600160a01b9215159290920291909117909555855192835282019390935280840192909252606082015290517f1400ba2558efe19fc8d7538b626f52083999103aea4d54d27d2511017e95e2d4916080908290030190a1505050565b60006111ce6006611549565b905090565b6000546201000090046001600160a01b03163314611226576040805162461bcd60e51b81526020600482015260186024820152600080516020611ad8833981519152604482015290519081900360640190fd5b61123160068261152d565b61126c5760405162461bcd60e51b8152600401808060200182810382526025815260200180611af86025913960400191505060405180910390fd5b6000816001600160a01b031663508d1e6b6040518163ffffffff1660e01b815260040160206040518083038186803b1580156112a757600080fd5b505afa1580156112bb573d6000803e3d6000fd5b505050506040513d60208110156112d157600080fd5b505190506112e0600683611717565b506112e9611938565b5060ff80821660008181526008602081815260408084208151808301835281546001600160a01b038082168352600160a01b82049099161515828601908152968890529484526001600160a81b0319909416905592518351958816865290850193909352911515838201525190917f626aa489691af84bf64ea4aa134b8304d7f9b324e1200a8b03fef32d2ca08e67919081900360600190a1505050565b6000610810600683611554565b600054610100900460ff16806113ad57506113ad61172c565b806113bb575060005460ff16155b6113f65760405162461bcd60e51b815260040180806020018281038252602e815260200180611a40602e913960400191505060405180910390fd5b600054610100900460ff16158015611421576000805460ff1961ff0019909116610100171660011790555b6000805462010000600160b01b03191633620100000217905561144383610940565b61144c826105d8565b801561145e576000805461ff00191690555b505050565b60046020526000908152604090205460ff1681565b6402540be40081565b60008061148d84611560565b8360405160200180838051906020019060200280838360005b838110156114be5781810151838201526020016114a6565b5050505060f89490941b6001600160f81b03191693909101928352505060408051808303601e1901815260019092018152815160209283012060ff87166000908152600890935291205490925061151f91506001600160a01b03168261173d565b949350505050565b3b151590565b6000611542836001600160a01b03841661174a565b9392505050565b600061081082611762565b60006115428383611766565b805160609060005b8181101561165557600181015b8281101561164c5784818151811061158957fe5b60200260200101516001600160a01b03168583815181106115a657fe5b60200260200101516001600160a01b031611156116445760008583815181106115cb57fe5b602002602001015190508582815181106115e157fe5b60200260200101518684815181106115f557fe5b60200260200101906001600160a01b031690816001600160a01b0316815250508086838151811061162257fe5b60200260200101906001600160a01b031690816001600160a01b031681525050505b600101611575565b50600101611568565b509192915050565b6000604051733d602d80600a3d3981f3363d3d373d3d3d363d7360601b81528360601b60148201526e5af43d82803e903d91602b57fd5bf360881b6028820152826037826000f59150506001600160a01b038116610810576040805162461bcd60e51b815260206004820152601760248201527f455243313136373a2063726561746532206661696c6564000000000000000000604482015290519081900360640190fd5b6000611542836001600160a01b0384166117ca565b6000611542836001600160a01b038416611814565b600061173730611527565b15905090565b60006115428383306118da565b60009081526001919091016020526040902054151590565b5490565b815460009082106117a85760405162461bcd60e51b815260040180806020018281038252602281526020018061198a6022913960400191505060405180910390fd5b8260000182815481106117b757fe5b9060005260206000200154905092915050565b60006117d6838361174a565b61180c57508154600181810184556000848152602080822090930184905584548482528286019093526040902091909155610810565b506000610810565b600081815260018301602052604081205480156118d0578354600019808301919081019060009087908390811061184757fe5b906000526020600020015490508087600001848154811061186457fe5b60009182526020808320909101929092558281526001898101909252604090209084019055865487908061189457fe5b60019003818190600052602060002001600090559055866001016000878152602001908152602001600020600090556001945050505050610810565b6000915050610810565b604051733d602d80600a3d3981f3363d3d373d3d3d363d7360601b8152606093841b60148201526f5af43d82803e903d91602b57fd5bf3ff60801b6028820152921b6038830152604c8201526037808220606c830152605591012090565b60408051808201909152600080825260208201529056fe50616972466163746f72793a2074686973207061697220747970652063616e206f6e6c792062652063726561746564206279206d616e61676572456e756d657261626c655365743a20696e646578206f7574206f6620626f756e647350616972466163746f72793a206d616e6167657220686173206265656e2073657450616972466163746f72793a20546869732070616972207479706520616c72656164792065786973747350616972466163746f72793a205f646566537761704665655261746520696e76616c696450616972466163746f72793a2054686973207061697220616c726561647920657869737473496e697469616c697a61626c653a20636f6e747261637420697320616c726561647920696e697469616c697a656450616972466163746f72793a206e6f742070656e64696e6720666565206d616e6167657250616972466163746f72793a205f64656641646d696e4665655261746520696e76616c696450616972466163746f72793a204e6f20696d706c206f662074686973207479706550616972466163746f72793a206e6f74206d616e61676572000000000000000050616972466163746f72793a2054686973207061697220646f6573206e6f7420657869737450616972466163746f72793a204f766572204d41585f535741505f464545206973206e6f7420616c6c6f77656450616972466163746f72793a204f766572204d41585f41444d494e5f464545206973206e6f7420616c6c6f776564a2646970667358221220de6188a0c13892f62ae8ca5efee567620bbdd94e34df98992dc7967ca69244ea64736f6c634300060c0033",
+  "devdoc": {
+    "details": "This contract is responsible for creating and managing pairs.",
+    "events": {
+      "ChangeManager(address,address)": {
+        "details": "Event emitted when the manager is changed.",
+        "params": {
+          "newManager": "The new manager.",
+          "oldManager": "The old manager."
+        }
+      },
+      "PairCreated(address[],uint8,address,uint256)": {
+        "details": "Event emitted when a new pair is created.",
+        "params": {
+          "pair": "The address of the new pair.",
+          "pairType": "The type of the new pair.",
+          "pairsAmount": "The total number of pairs.",
+          "tokens": "The tokens in the new pair."
+        }
+      },
+      "RemovePairType(address,uint8,bool)": {
+        "details": "Event emitted when a pair type is removed.",
+        "params": {
+          "auth": "The authorization status of the pair to be removed.",
+          "impl": "The address of the pair implementation.",
+          "pairType": "The type of the pair to be removed."
+        }
+      },
+      "SetDefAdminFeeRate(uint256,uint256)": {
+        "details": "Event emitted when the default admin fee rate is changed.",
+        "params": {
+          "newDefAdminFeeRate": "The new default admin fee rate.",
+          "oldDefAdminFeeRate": "The old default admin fee rate."
+        }
+      },
+      "SetDefSwapFeeRate(uint256,uint256)": {
+        "details": "Event emitted when the default swap fee rate is changed.",
+        "params": {
+          "newDefSwapFeeRate": "The new default swap fee rate.",
+          "oldDefSwapFeeRate": "The old default swap fee rate."
+        }
+      },
+      "SetPairType(address,uint8,bool,address)": {
+        "details": "Event emitted when a new pair type is added.",
+        "params": {
+          "auth": "The authorization status of the new pair.",
+          "impl": "The address of the pair implementation.",
+          "oldImpl": "The address of the old pair implementation.",
+          "pairType": "The type of the new pair."
+        }
+      },
+      "SetPendingManager(address,address)": {
+        "details": "Event emitted when a new manager is pending.",
+        "params": {
+          "manager": "The current manager.",
+          "pendingManager": "The new pending manager."
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "acceptManager()": {
+        "details": "Function that accepts the pending manager address."
+      },
+      "addPairType(address)": {
+        "details": "Function that adds a new pair type.",
+        "params": {
+          "_impl": "The address of the pair implementation."
+        }
+      },
+      "allPairsLength()": {
+        "details": "Function that returns the length of the allPairs array.",
+        "returns": {
+          "_0": "The length of the allPairs array."
+        }
+      },
+      "atPairType(uint256)": {
+        "details": "Function that returns the pair implementation address at the given index.",
+        "params": {
+          "_index": "The index of the pair implementation address to return."
+        },
+        "returns": {
+          "_0": "The pair implementation address at the given index."
+        }
+      },
+      "constructor": {
+        "details": "Constructor function that initializes the default swap fee rate and default admin fee rate.",
+        "params": {
+          "_defAdminFeeRate": "The default admin fee rate.",
+          "_defSwapFeeRate": "The default swap fee rate."
+        }
+      },
+      "containsPair(address)": {
+        "details": "Function that checks if a pair with the given address exists.",
+        "params": {
+          "value": "The address of the pair to check."
+        },
+        "returns": {
+          "_0": "A boolean indicating whether the pair exists or not."
+        }
+      },
+      "createPair(address[],uint8,bytes)": {
+        "details": "Function that creates a new pair with the given tokens and pair type.",
+        "params": {
+          "_data": "Additional data to pass to the pair's `initialize` function.",
+          "_pairType": "The type of the pair to create.",
+          "_tokens": "The tokens to create the pair with."
+        },
+        "returns": {
+          "_pair": "The address of the newly created pair."
+        }
+      },
+      "getPairAddress(address[],uint8)": {
+        "details": "Function that returns the pair address for the given tokens and pair type.",
+        "params": {
+          "_pairType": "The type of the pair to create.",
+          "_tokens": "The tokens to create the pair with."
+        },
+        "returns": {
+          "_0": "The pair address for the given tokens and pair type."
+        }
+      },
+      "initialize(uint256,uint256)": {
+        "details": "Function that initializes the default swap fee rate, default admin fee rate, and manager.",
+        "params": {
+          "_defAdminFeeRate": "The default admin fee rate.",
+          "_defSwapFeeRate": "The default swap fee rate."
+        }
+      },
+      "pairTypeAmount()": {
+        "details": "Function that returns the number of pair implementations.",
+        "returns": {
+          "_0": "The number of pair implementations."
+        }
+      },
+      "pairTypeValues()": {
+        "details": "Function that returns an array of all pair implementation addresses.",
+        "returns": {
+          "_pairImpls": "An array of all pair implementation addresses."
+        }
+      },
+      "removePairType(address)": {
+        "details": "Function that removes a pair type.",
+        "params": {
+          "_impl": "The address of the pair implementation."
+        }
+      },
+      "setDefAdminFeeRate(uint256)": {
+        "details": "Function that sets the default admin fee rate.",
+        "params": {
+          "_defAdminFeeRate": "The new default admin fee rate."
+        }
+      },
+      "setDefSwapFeeRate(uint256)": {
+        "details": "Function that sets the default swap fee rate.",
+        "params": {
+          "_defSwapFeeRate": "The new default swap fee rate."
+        }
+      },
+      "setPendingManager(address)": {
+        "details": "Function that sets the pending manager address.",
+        "params": {
+          "_pendingManager": "The address of the pending manager."
+        }
+      }
+    },
+    "title": "PairFactory",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 492,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 495,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "_initializing",
+        "offset": 1,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 3880,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "manager",
+        "offset": 2,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 3882,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "pendingManager",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 3884,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "defSwapFeeRate",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 3886,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "defAdminFeeRate",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 3891,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "isPair",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 3894,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "allPairs",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 3896,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "pairImpls_",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_struct(AddressSet)3630_storage"
+      },
+      {
+        "astId": 3905,
+        "contract": "contracts/PairFactory.sol:PairFactory",
+        "label": "pairParams",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_uint8,t_struct(PairParams)3901_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_bytes32)dyn_storage": {
+        "base": "t_bytes32",
+        "encoding": "dynamic_array",
+        "label": "bytes32[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_bytes32,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint8,t_struct(PairParams)3901_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint8",
+        "label": "mapping(uint8 => struct PairFactory.PairParams)",
+        "numberOfBytes": "32",
+        "value": "t_struct(PairParams)3901_storage"
+      },
+      "t_struct(AddressSet)3630_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.AddressSet",
+        "members": [
+          {
+            "astId": 3629,
+            "contract": "contracts/PairFactory.sol:PairFactory",
+            "label": "_inner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(Set)3365_storage"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(PairParams)3901_storage": {
+        "encoding": "inplace",
+        "label": "struct PairFactory.PairParams",
+        "members": [
+          {
+            "astId": 3898,
+            "contract": "contracts/PairFactory.sol:PairFactory",
+            "label": "impl",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 3900,
+            "contract": "contracts/PairFactory.sol:PairFactory",
+            "label": "auth",
+            "offset": 20,
+            "slot": "0",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_struct(Set)3365_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.Set",
+        "members": [
+          {
+            "astId": 3360,
+            "contract": "contracts/PairFactory.sol:PairFactory",
+            "label": "_values",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_bytes32)dyn_storage"
+          },
+          {
+            "astId": 3364,
+            "contract": "contracts/PairFactory.sol:PairFactory",
+            "label": "_indexes",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_bytes32,t_uint256)"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}
