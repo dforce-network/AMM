@@ -57,12 +57,39 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
         }
 
         let usx = await deployAndVerify('USX', 'MSD', []);
-
         if (usxAddress == undefined) {
             const USX = await ethers.getContractFactory('MSD')
             usx = USX.attach(usx.address)
             await usx.initialize('dForce USD', 'USX', 18);
             console.log("usx initialize done");
+        }
+
+        let stETHAddress;
+        try {
+            stETHAddress = (await deployments.get('stETH')).address
+        } catch (error) {
+        }
+
+        let stETH = await deployAndVerify('stETH', 'MSD', []);
+        if (stETHAddress == undefined) {
+            const MSD = await ethers.getContractFactory('MSD')
+            stETH = MSD.attach(stETH.address)
+            await stETH.initialize('stETH', 'stETH', 18);
+            console.log("stETH initialize done");
+        }
+
+        let cbETHAddress;
+        try {
+            cbETHAddress = (await deployments.get('cbETH')).address
+        } catch (error) {
+        }
+
+        let cbETH = await deployAndVerify('cbETH', 'MSD', []);
+        if (cbETHAddress == undefined) {
+            const MSD = await ethers.getContractFactory('MSD')
+            cbETH = MSD.attach(cbETH.address)
+            await cbETH.initialize('cbETH', 'cbETH', 18);
+            console.log("stETH initialize done");
         }
 
     } else {

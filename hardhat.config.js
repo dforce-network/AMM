@@ -6,11 +6,12 @@ require('hardhat-abi-exporter');
 require('dotenv').config();
 require('solidity-coverage');
 require("@nomiclabs/hardhat-etherscan");
-const { setGlobalDispatcher, ProxyAgent } = require("undici");
 
-// hardhat verify uses undici
-const proxyAgent = new ProxyAgent("http://127.0.0.1:1087");
-setGlobalDispatcher(proxyAgent);
+// const { setGlobalDispatcher, ProxyAgent } = require("undici");
+
+// // hardhat verify uses undici
+// const proxyAgent = new ProxyAgent("http://127.0.0.1:1087");
+// setGlobalDispatcher(proxyAgent);
 
 const privateKey = process.env.PRIVATE_KEY ?? "NO_PRIVATE_KEY";
 const scanKey = process.env.ETHERSCAN_API_KEY ?? "ETHERSCAN_API_KEY";
@@ -29,22 +30,21 @@ module.exports = {
   networks: {
     hardhat: {
     },
-    'truffle-dashboard': {
-      url: "http://localhost:24012/rpc",
+    arbitrum: {
+      url: "http://localhost:24012/rpc", // truffle-dashboard
       timeout: 200000,
     },
     goerli: {
-      // url: 'https://endpoints.omniatech.io/v1/eth/goerli/public',
-      url: 'https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      // url: goerliRpc,
+      url: "https://ethereum-goerli.publicnode.com",
       accounts: [`${privateKey}`],
       chainId: 5,
+      zksync: false,
     },
     sepolia: {
       url: 'https://rpc2.sepolia.org/',
       accounts: [`${privateKey}`],
       chainId: 11155111,
-    }
+    },
   },
   solidity: {
     compilers: [
@@ -127,6 +127,5 @@ module.exports = {
       goerli: scanKey,
       sepolia: scanKey
     }
-  }
-
+  },
 };

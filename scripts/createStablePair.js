@@ -20,6 +20,7 @@ async function main() {
   const usx = (await deployments.get('USX')).address;
   const wbtc = (await deployments.get('WBTC')).address;
   const hbtc = (await deployments.get('HBTC')).address;
+  const stETH = (await deployments.get('stETH')).address
 
   const SBTC = '0xF3d29e9D5A4208284C187A008376A1D7f0058ABb'
   const ZD = '0x4aD3821892FaFa5258aBDF4A5636eCCA676E7728'
@@ -27,12 +28,16 @@ async function main() {
   const TTD = '0x780fF13Ee385fcab78e10259Ca26E3d449Af1b19'
   const TSD = '0x577fF076Fa10B29e46B35F4Bba6ed58a22919B44'
   const FZD = '0x0f47cA9e1f692E535829835FfDC086C45585DF1c'
+  const WETH = '0x62fB5AaDdc4bd26C6DC50fa5dE679CAa6fa8B44b'
 
   let createData = coder.encode(['uint256', 'uint256', 'uint256', 'address'], [swapFee, adminFee, '10000', lpToken]);
-  await createPair(factory, createData, [usdt, usx], 'USDT-USX')
-  await createPair(factory, createData, [usdt, usdc, usx], 'USDT-USDC-USX')
-  await createPair(factory, createData, [usdt, usdc, dai, usx], 'USDT-USDC-DAI-USX')
-  await createPair(factory, createData, [hbtc, wbtc], 'HBTC-WBTC')
+  // await createPair(factory, createData, [WETH, stETH], 'WETH-stETH')
+  await createPair(factory, createData, [usdc, usx], 'USDC-USX')
+  // await createPair(factory, createData, [usdc, dai, usx], 'USDC-DAI-USX')
+  // await createPair(factory, createData, [usdt, usx], 'USDT-USX')
+  // await createPair(factory, createData, [usdt, usdc, usx], 'USDT-USDC-USX')
+  // await createPair(factory, createData, [usdt, usdc, dai, usx], 'USDT-USDC-DAI-USX')
+  // await createPair(factory, createData, [hbtc, wbtc], 'HBTC-WBTC')
 
   // await createPair(factory, createData, [SBTC, ZD], 'SBTC-ZD')
   // await createPair(factory, createData, [SBTC, TD], 'SBTC-TD')

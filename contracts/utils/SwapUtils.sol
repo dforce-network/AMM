@@ -526,26 +526,76 @@ library SwapUtils {
         uint256[] calldata amounts,
         bool deposit
     ) external view returns (uint256) {
+        if (deposit) return _calculateAddLiquidityTokenAmount(self, amounts);
+
         uint256 a = _getAPrecise(self);
         uint256[] memory balances = self.balances;
         uint256[] memory multipliers = self.tokenPrecisionMultipliers;
 
         uint256 d0 = getD(_xp(balances, multipliers), a);
         for (uint256 i = 0; i < balances.length; i++) {
-            if (deposit) {
-                balances[i] = balances[i].add(amounts[i]);
-            } else {
-                balances[i] = balances[i].sub(amounts[i], "Cannot withdraw more than available");
-            }
+            balances[i] = balances[i].sub(amounts[i], "Cannot withdraw more than available");
         }
         uint256 d1 = getD(_xp(balances, multipliers), a);
         uint256 totalSupply = self.lpToken.totalSupply();
+        return d0.sub(d1).mul(totalSupply).div(d0);
+    }
 
-        if (deposit) {
-            return d1.sub(d0).mul(totalSupply).div(d0);
-        } else {
-            return d0.sub(d1).mul(totalSupply).div(d0);
+    /**
+     * @notice A simple method to calculate prices from deposits, including fees and slippage.
+     * This is helpful as an input into the various "min" parameters on calls to fight front-running
+     *
+     * @dev This shouldn't be used outside frontends for user estimates.
+     *
+     * @param self Swap struct to read from
+     * @param amounts an array of token amounts to deposit,
+     * corresponding to pooledTokens. The amount should be in each
+     * pooled token's native precision. If a token charges a fee on transfers,
+     * use the amount that gets transferred after the fee.
+     * @return total amount of lp token that will be minted.
+     */
+    function _calculateAddLiquidityTokenAmount(
+        Swap storage self,
+        uint256[] memory amounts
+    ) internal view returns (uint256) {
+        IERC20[] memory pooledTokens = self.pooledTokens;
+        require(amounts.length == pooledTokens.length, "Amounts must match pooled tokens");
+
+        ManageLiquidityInfo memory v = ManageLiquidityInfo(
+            0,
+            0,
+            0,
+            _getAPrecise(self),
+            self.lpToken,
+            0,
+            self.balances,
+            self.tokenPrecisionMultipliers
+        );
+        v.totalSupply = v.lpToken.totalSupply();
+
+        uint256[] memory newBalances = new uint256[](pooledTokens.length);
+        for (uint256 i = 0; i < pooledTokens.length; i++) {
+            require(v.totalSupply != 0 || amounts[i] > 0, "Must supply all tokens in pool");
+            newBalances[i] = v.balances[i].add(amounts[i]);
         }
+
+        if (v.totalSupply != 0) {
+            v.d0 = getD(_xp(v.balances, v.multipliers), v.preciseA);
+        }
+        v.d1 = getD(_xp(newBalances, v.multipliers), v.preciseA);
+        require(v.d1 > v.d0, "D should increase");
+
+        if (v.totalSupply == 0) return v.d1;
+
+        uint256 feePerToken = _feePerToken(self.swapFee, pooledTokens.length);
+        for (uint256 i = 0; i < pooledTokens.length; i++) {
+            newBalances[i] = newBalances[i].sub(
+                feePerToken.mul(v.d1.mul(v.balances[i]).div(v.d0).difference(newBalances[i])).div(FEE_DENOMINATOR)
+            );
+        }
+
+        v.d2 = getD(_xp(newBalances, v.multipliers), v.preciseA);
+        return v.d2.sub(v.d0).mul(v.totalSupply).div(v.d0);
     }
 
     /**

@@ -29,3 +29,5 @@ local
 
 .idea
 deployments/localhost
+artifacts-zk
+cache-zk

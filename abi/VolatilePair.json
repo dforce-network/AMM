@@ -90,19 +90,6 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
-        "internalType": "uint8",
-        "name": "version",
-        "type": "uint8"
-      }
-    ],
-    "name": "Initialized",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
         "indexed": true,
         "internalType": "address",
         "name": "sender",
@@ -130,13 +117,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_old",
+        "name": "oldAdminFeeRate",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_new",
+        "name": "newAdminFeeRate",
         "type": "uint256"
       }
     ],
@@ -149,13 +136,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_old",
+        "name": "oldSwapFeeRate",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_new",
+        "name": "newSwapFeeRate",
         "type": "uint256"
       }
     ],
@@ -456,7 +443,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       }
     ],
@@ -464,12 +451,12 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "amount0",
+        "name": "_amount0",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "amount1",
+        "name": "_amount1",
         "type": "uint256"
       }
     ],
@@ -524,7 +511,7 @@
       },
       {
         "internalType": "address",
-        "name": "",
+        "name": "_to",
         "type": "address"
       },
       {
@@ -568,17 +555,17 @@
     "outputs": [
       {
         "internalType": "uint112",
-        "name": "_reserve0",
+        "name": "",
         "type": "uint112"
       },
       {
         "internalType": "uint112",
-        "name": "_reserve1",
+        "name": "",
         "type": "uint112"
       },
       {
         "internalType": "uint32",
-        "name": "_blockTimestampLast",
+        "name": "",
         "type": "uint32"
       }
     ],
@@ -620,7 +607,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       }
     ],
@@ -628,7 +615,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "liquidity",
+        "name": "_liquidity",
         "type": "uint256"
       }
     ],
@@ -766,7 +753,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       }
     ],
@@ -778,52 +765,23 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_tokenA",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_tokenB",
-        "type": "address"
-      }
-    ],
-    "name": "sortTokens",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "_token0",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_token1",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "uint256",
-        "name": "amount0Out",
+        "name": "_amount0Out",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "amount1Out",
+        "name": "_amount1Out",
         "type": "uint256"
       },
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       },
       {
         "internalType": "bytes",
-        "name": "data",
+        "name": "_data",
         "type": "bytes"
       }
     ],
@@ -897,7 +855,7 @@
     "outputs": [
       {
         "internalType": "address[]",
-        "name": "_tokens",
+        "name": "",
         "type": "address[]"
       }
     ],

@@ -1,7 +1,7 @@
 const { ethers } = hre;
 const coder = new ethers.utils.AbiCoder
-const swapFee = '30000000';
-const adminFee = '5000000000'
+
+const { defSwapFee, defAdminFee } = require("../config/params")
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy } = deployments;
@@ -74,7 +74,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         const usdt = (await deployments.get('USDT')).address;
         const usdc = (await deployments.get('USDC')).address;
 
-        let data = coder.encode(['uint256', 'uint256', 'uint256', 'address'], [swapFee, adminFee, '10000', lpToken]);
+        let data = coder.encode(['uint256', 'uint256', 'uint256', 'address'], [defSwapFee, defAdminFee, '10000', lpToken]);
 
         await stablePair.initialize([usdt, usdc], data);
         console.log("stable pair impl initialize done");
@@ -87,7 +87,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         const usdt = (await deployments.get('USDT')).address;
         const usdc = (await deployments.get('USDC')).address;
 
-        let data = coder.encode(['uint256', 'uint256'], [swapFee, adminFee]);
+        let data = coder.encode(['uint256', 'uint256'], [defSwapFee, defAdminFee]);
 
         await volatilePair.initialize([usdt, usdc], data);
         console.log("volatile piar impl initialize done");

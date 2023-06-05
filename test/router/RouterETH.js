@@ -1291,7 +1291,7 @@ describe("Router", function () {
       expect(amountsMin[0]).to.be.equal(amountDesireds[0]);
       expect(amountsMin[1]).to.be.equal(amountDesireds[1]);
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
-      expect(minLiquidity).to.be.equal(ZERO);
+      expect(minLiquidity).to.be.gt(ZERO);
 
       let before = {};
       for (let index = 0; index < tokenContracts.length; index++) {
@@ -1897,7 +1897,7 @@ describe("Router", function () {
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
       expect(minLiquidityDesired).to.be.gt(ZERO);
 
-      const minLiquidity = minLiquidityDesired;
+      const minLiquidity = minLiquidityDesired.add(ONE);
 
       await expect(
         Router.connect(sender).addLiquidityETH(
@@ -2063,7 +2063,7 @@ describe("Router", function () {
       expect(amountsMin[0]).to.be.equal(amountDesireds[0]);
       expect(amountsMin[1]).to.be.equal(amountDesireds[1]);
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
-      expect(minLiquidityDesired).to.be.gt(ZERO);
+      expect(minLiquidityDesired).to.be.equal(ZERO);
 
       const minLiquidity = ZERO;
 
@@ -2217,7 +2217,7 @@ describe("Router", function () {
       expect(amountsMin[0]).to.be.equal(amountDesireds[0]);
       expect(amountsMin[1]).to.be.equal(amountDesireds[1]);
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
-      expect(minLiquidity).to.be.equal(ZERO);
+      expect(minLiquidity).to.be.gt(ZERO);
 
       let before = {};
       for (let index = 0; index < tokenContracts.length; index++) {

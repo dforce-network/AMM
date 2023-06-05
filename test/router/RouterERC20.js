@@ -7,6 +7,7 @@ const {
   loadFixture,
   fixtureDefault,
   deployAMMProtocol,
+  deployRouter,
   createPair,
   addLiquidity,
   allocateTo,
@@ -143,7 +144,7 @@ describe("Router", function () {
     it("Router: not manager setPairTypes, revert", async function () {
       expect((await PairFactory.manager()) != user.address).to.equal(true);
       await expect(
-        Router.connect(user).setPairTypes(PairFactory.address)
+        Router.connect(user).setPairTypes( PairFactory.address)
       ).to.be.revertedWith("Router: not manager");
     });
   });
@@ -1175,7 +1176,7 @@ describe("Router", function () {
       expect(amountsMin[0]).to.be.equal(amountDesireds[0]);
       expect(amountsMin[1]).to.be.equal(amountDesireds[1]);
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
-      expect(minLiquidity).to.be.equal(ZERO);
+      expect(minLiquidity).to.be.gt(ZERO);
 
       let before = {};
       for (let index = 0; index < tokenContracts.length; index++) {
@@ -1656,7 +1657,7 @@ describe("Router", function () {
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
       expect(minLiquidityDesired).to.be.gt(ZERO);
 
-      const minLiquidity = minLiquidityDesired;
+      const minLiquidity = minLiquidityDesired.add(ONE);
 
       await expect(
         Router.connect(sender).addLiquidity(
@@ -1806,7 +1807,7 @@ describe("Router", function () {
       expect(amountsMin[0]).to.be.equal(amountDesireds[0]);
       expect(amountsMin[1]).to.be.equal(amountDesireds[1]);
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
-      expect(minLiquidityDesired).to.be.gt(ZERO);
+      expect(minLiquidityDesired).to.be.equal(ZERO);
 
       const minLiquidity = ZERO;
 
@@ -1942,7 +1943,7 @@ describe("Router", function () {
       expect(amountsMin[0]).to.be.equal(amountDesireds[0]);
       expect(amountsMin[1]).to.be.equal(amountDesireds[1]);
       expect(amountsMin[2]).to.be.equal(amountDesireds[2]);
-      expect(minLiquidity).to.be.equal(ZERO);
+      expect(minLiquidity).to.be.gt(ZERO);
 
       await WETH.connect(creator).deposit({ value: amountDesireds[2] });
 

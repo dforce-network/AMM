@@ -1,5 +1,18 @@
 [
   {
+    "inputs": [],
+    "name": "PAIR_TYPE",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address[]",
@@ -66,6 +79,11 @@
         "type": "uint256[]"
       },
       {
+        "internalType": "uint256",
+        "name": "_minLiquidity",
+        "type": "uint256"
+      },
+      {
         "internalType": "address",
         "name": "_to",
         "type": "address"
@@ -114,7 +132,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "liquidity",
+        "name": "_liquidity",
         "type": "uint256"
       }
     ],
@@ -394,7 +412,7 @@
         "type": "uint256"
       }
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "function"
   }
 ]

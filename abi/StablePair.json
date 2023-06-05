@@ -41,19 +41,6 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint8",
-        "name": "version",
-        "type": "uint8"
-      }
-    ],
-    "name": "Initialized",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
         "internalType": "uint256",
         "name": "newAdminFee",
         "type": "uint256"
@@ -664,7 +651,7 @@
     ],
     "name": "rampA",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -703,7 +690,7 @@
         "type": "uint256[]"
       }
     ],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -807,14 +794,14 @@
     ],
     "name": "setSwapFee",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "stopRampA",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -909,8 +896,8 @@
     "name": "tokens",
     "outputs": [
       {
-        "internalType": "contract IERC20[]",
-        "name": "",
+        "internalType": "address[]",
+        "name": "_tokens",
         "type": "address[]"
       }
     ],

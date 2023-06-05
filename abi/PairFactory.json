@@ -20,12 +20,18 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint8",
-        "name": "version",
-        "type": "uint8"
+        "internalType": "address",
+        "name": "oldManager",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newManager",
+        "type": "address"
       }
     ],
-    "name": "Initialized",
+    "name": "ChangeManager",
     "type": "event"
   },
   {
@@ -40,7 +46,7 @@
       {
         "indexed": false,
         "internalType": "uint8",
-        "name": "_type",
+        "name": "pairType",
         "type": "uint8"
       },
       {
@@ -65,19 +71,19 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "_impl",
+        "name": "impl",
         "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint8",
-        "name": "_type",
+        "name": "pairType",
         "type": "uint8"
       },
       {
         "indexed": false,
         "internalType": "bool",
-        "name": "_auth",
+        "name": "auth",
         "type": "bool"
       }
     ],
@@ -90,13 +96,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_old",
+        "name": "oldDefAdminFeeRate",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_new",
+        "name": "newDefAdminFeeRate",
         "type": "uint256"
       }
     ],
@@ -109,13 +115,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_old",
+        "name": "oldDefSwapFeeRate",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_new",
+        "name": "newDefSwapFeeRate",
         "type": "uint256"
       }
     ],
@@ -127,18 +133,30 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "_old",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "impl",
+        "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "_new",
-        "type": "uint256"
+        "internalType": "uint8",
+        "name": "pairType",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "auth",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oldImpl",
+        "type": "address"
       }
     ],
-    "name": "SetPairAdminFeeRate",
+    "name": "SetPairType",
     "type": "event"
   },
   {
@@ -147,29 +165,17 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "_impl",
+        "name": "manager",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint8",
-        "name": "_type",
-        "type": "uint8"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "_auth",
-        "type": "bool"
       },
       {
         "indexed": false,
         "internalType": "address",
-        "name": "_old",
+        "name": "pendingManager",
         "type": "address"
       }
     ],
-    "name": "SetPairType",
+    "name": "SetPendingManager",
     "type": "event"
   },
   {
@@ -429,12 +435,12 @@
     "outputs": [
       {
         "internalType": "address",
-        "name": "_impl",
+        "name": "impl",
         "type": "address"
       },
       {
         "internalType": "bool",
-        "name": "_auth",
+        "name": "auth",
         "type": "bool"
       }
     ],
@@ -460,7 +466,7 @@
     "outputs": [
       {
         "internalType": "address[]",
-        "name": "",
+        "name": "_pairImpls",
         "type": "address[]"
       }
     ],
@@ -523,24 +529,11 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_manager",
+        "name": "_pendingManager",
         "type": "address"
       }
     ],
-    "name": "setManager",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_impl",
-        "type": "address"
-      }
-    ],
-    "name": "setPairType",
+    "name": "setPendingManager",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

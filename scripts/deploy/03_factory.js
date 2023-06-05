@@ -1,7 +1,6 @@
 const { ethers } = require("hardhat");
 
-const swapFee = '30000000';
-const adminFee = '5000000000'
+const { defSwapFee, defAdminFee } = require("../config/params")
 
 //pairType, 1: volatilePair, 2:stablePair
 
@@ -15,7 +14,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     } catch (error) {
     }
 
-    const params = [swapFee, adminFee];
+    const params = [defSwapFee, defAdminFee];
 
     let impl = await deploy('PairFactoryImpl', {
         from: deployer,

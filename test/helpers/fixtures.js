@@ -351,8 +351,8 @@ async function deployAMMProtocol() {
 
   const VolatileRouter = await deployVolatileRouter(PairFactory.address);
   const StableRouter = await deployStableRouter(PairFactory.address);
-  await Router.setPairTypes(VolatileRouter.address);
-  await Router.setPairTypes(StableRouter.address);
+  await Router.setPairTypes( VolatileRouter.address);
+  await Router.setPairTypes( StableRouter.address);
 
   return {
     Router,

@@ -114,10 +114,11 @@ contract Router is Initializable {
      * @param _routes The route to take
      * @return _amounts The amounts of tokens that will be received
      */
-    function _getAmountsOut(
-        uint256 _amountIn,
-        Route[] memory _routes
-    ) internal view returns (uint256[] memory _amounts) {
+    function _getAmountsOut(uint256 _amountIn, Route[] memory _routes)
+        internal
+        view
+        returns (uint256[] memory _amounts)
+    {
         _amounts = new uint256[](_routes.length + 1);
         _amounts[0] = _amountIn;
 
@@ -130,10 +131,11 @@ contract Router is Initializable {
      * @param _amountIn The input amount
      * @param _routes The route to take
      */
-    function getAmountsOutPath(
-        uint256 _amountIn,
-        Route[] memory _routes
-    ) external view returns (uint256[] memory _amounts) {
+    function getAmountsOutPath(uint256 _amountIn, Route[] memory _routes)
+        external
+        view
+        returns (uint256[] memory _amounts)
+    {
         _amounts = _getAmountsOut(_amountIn, _routes);
     }
 

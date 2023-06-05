@@ -91,8 +91,13 @@
       },
       {
         "internalType": "uint256[]",
-        "name": "_amountMins",
+        "name": "_amountsMin",
         "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_minLiquidity",
+        "type": "uint256"
       },
       {
         "internalType": "address",
@@ -137,72 +142,26 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "_amountIn",
-        "type": "uint256"
-      },
-      {
-        "components": [
-          {
-            "internalType": "address",
-            "name": "from",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "to",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "pair",
-            "type": "address"
-          }
-        ],
-        "internalType": "struct IPairRouter.Route[]",
-        "name": "_routes",
-        "type": "tuple[]"
-      }
-    ],
-    "name": "getAmountsOut",
-    "outputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "_amounts",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "_pair",
         "type": "address"
       },
       {
-        "internalType": "address",
-        "name": "tokenA",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "tokenB",
-        "type": "address"
+        "internalType": "address[]",
+        "name": "_tokens",
+        "type": "address[]"
       }
     ],
     "name": "getReserves",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "reserveA",
+        "name": "_reserveA",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "reserveB",
+        "name": "_reserveB",
         "type": "uint256"
       }
     ],
@@ -226,12 +185,12 @@
     "outputs": [
       {
         "internalType": "uint256[]",
-        "name": "_amountIn",
+        "name": "_amountsIn",
         "type": "uint256[]"
       },
       {
         "internalType": "uint256",
-        "name": "liquidity",
+        "name": "_liquidity",
         "type": "uint256"
       }
     ],
@@ -392,7 +351,7 @@
     "outputs": [
       {
         "internalType": "uint256[]",
-        "name": "",
+        "name": "_amounts",
         "type": "uint256[]"
       }
     ],
@@ -461,35 +420,6 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "tokenA",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "tokenB",
-        "type": "address"
-      }
-    ],
-    "name": "sortTokens",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "token0",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "token1",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "components": [
           {
             "internalType": "address",
@@ -518,7 +448,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_amountOutMin",
+        "name": "_amountOut",
         "type": "uint256"
       },
       {
@@ -536,11 +466,11 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "_amountOut",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -548,7 +478,7 @@
     "name": "weth",
     "outputs": [
       {
-        "internalType": "contract IWETH",
+        "internalType": "address",
         "name": "",
         "type": "address"
       }

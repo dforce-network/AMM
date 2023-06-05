@@ -29,7 +29,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       }
     ],
@@ -37,13 +37,26 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "amount0",
+        "name": "_amount0",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "amount1",
+        "name": "_amount1",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "claimFees",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "_adminFees",
+        "type": "uint256[]"
       }
     ],
     "stateMutability": "nonpayable",
@@ -53,17 +66,17 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "from",
+        "name": "_from",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "amount",
+        "name": "_amount",
         "type": "uint256"
       }
     ],
@@ -80,21 +93,39 @@
   },
   {
     "inputs": [],
+    "name": "getRealBalanceOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getReserves",
     "outputs": [
       {
         "internalType": "uint112",
-        "name": "reserve0",
+        "name": "_reserve0",
         "type": "uint112"
       },
       {
         "internalType": "uint112",
-        "name": "reserve1",
+        "name": "_reserve1",
         "type": "uint112"
       },
       {
         "internalType": "uint32",
-        "name": "blockTimestampLast",
+        "name": "_blockTimestampLast",
         "type": "uint32"
       }
     ],
@@ -123,7 +154,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       }
     ],
@@ -131,7 +162,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "liquidity",
+        "name": "_liquidity",
         "type": "uint256"
       }
     ],
@@ -141,29 +172,75 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      }
+    ],
+    "name": "skim",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
-        "name": "amount0Out",
+        "name": "_amount0Out",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "amount1Out",
+        "name": "_amount1Out",
         "type": "uint256"
       },
       {
         "internalType": "address",
-        "name": "to",
+        "name": "_to",
         "type": "address"
       },
       {
         "internalType": "bytes",
-        "name": "data",
+        "name": "_data",
         "type": "bytes"
       }
     ],
     "name": "swap",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "sync",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "token0",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "token1",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -176,7 +253,7 @@
         "type": "address[]"
       }
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   }
 ]

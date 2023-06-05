@@ -45,7 +45,7 @@
       },
       {
         "internalType": "bytes",
-        "name": "data",
+        "name": "_data",
         "type": "bytes"
       }
     ],
@@ -53,7 +53,7 @@
     "outputs": [
       {
         "internalType": "address",
-        "name": "pair",
+        "name": "_pair",
         "type": "address"
       }
     ],
@@ -88,7 +88,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "pair",
+        "name": "_pair",
         "type": "address"
       }
     ],

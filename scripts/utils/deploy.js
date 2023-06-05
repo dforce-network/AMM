@@ -21,6 +21,7 @@ async function verify(address, args) {
             constructorArguments: args,
         });
     } catch (error) {
+        console.log(error);
         await delay(5000)
         verify(address, args)
     }
